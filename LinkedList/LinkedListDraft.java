@@ -57,6 +57,7 @@ public class LinkedList
     public void clear()
     {
         // здесь будет ваш код очистки всего списка
+        head.next = tail;
     }
 
     public int count()
