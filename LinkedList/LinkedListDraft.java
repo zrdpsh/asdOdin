@@ -38,7 +38,15 @@ public class LinkedList
     public boolean remove(int _value)
     {
         // здесь будет ваш код удаления одного узла по заданному значению
-        return true; // если узел был удалён
+        Node targetNode = this.find(_value);
+        if (targetNode != null) {
+            Node previousNode = head;
+            while (previousNode.next != targetNode) previousNode = previousNode.next;
+            previousNode.next = targetNode.next;
+            return true; // если узел был удалён
+        }
+        return false;
+
     }
 
     public void removeAll(int _value)
