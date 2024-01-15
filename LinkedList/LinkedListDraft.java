@@ -32,6 +32,12 @@ public class LinkedList
     public ArrayList<Node> findAll(int _value) {
         ArrayList<Node> nodes = new ArrayList<Node>();
         // здесь будет ваш код поиска всех узлов
+        Node currentNode = this.head;
+        while (currentNode.next != null) {
+            if (currentNode.next.value == _value) {
+                nodes.put(_value);
+            }
+        }
         return nodes;
     }
 
