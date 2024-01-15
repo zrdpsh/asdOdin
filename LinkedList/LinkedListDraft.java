@@ -62,7 +62,12 @@ public class LinkedList
 
     public int count()
     {
-        return 0; // здесь будет ваш код подсчёта количества элементов в списке
+        int res = 0;
+        while (this.head.next != null) {
+            res++;
+        }
+//        return 0; // здесь будет ваш код подсчёта количества элементов в списке
+        return res;
     }
 
     public void insertAfter(Node _nodeAfter, Node _nodeToInsert)
