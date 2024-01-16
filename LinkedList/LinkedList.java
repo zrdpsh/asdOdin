@@ -34,25 +34,24 @@ public class LinkedList
 
     public ArrayList<Node> findAll(int _value) {
         ArrayList<Node> nodes = new ArrayList<Node>();
-        // здесь будет ваш код поиска всех узлов
         Node currentNode = this.head;
-        while (currentNode.next != null) {
-            if (currentNode.next.value == _value) {
+        do {
+            if (currentNode.value == _value) {
                 nodes.add(currentNode);
             }
-        }
+            currentNode = currentNode.next;
+        } while (currentNode.next != null);
         return nodes;
     }
 
     public boolean remove(int _value)
     {
-        // здесь будет ваш код удаления одного узла по заданному значению
         Node targetNode = this.find(_value);
         if (targetNode != null) {
             Node previousNode = head;
             while (previousNode.next != targetNode) previousNode = previousNode.next;
             previousNode.next = targetNode.next;
-            return true; // если узел был удалён
+            return true;
         }
         return false;
 
@@ -60,7 +59,6 @@ public class LinkedList
 
     public void removeAll(int _value)
     {
-        // здесь будет ваш код удаления всех узлов по заданному значению
         while (true) {
             boolean flag = this.remove(_value);
             if (flag == false) break;
@@ -69,7 +67,6 @@ public class LinkedList
 
     public void clear()
     {
-        // здесь будет ваш код очистки всего списка
         head = null;
         head.next = tail;
     }
@@ -80,7 +77,6 @@ public class LinkedList
         while (this.head.next != null) {
             res++;
         }
-//        return 0; // здесь будет ваш код подсчёта количества элементов в списке
         return res;
     }
 
@@ -91,10 +87,6 @@ public class LinkedList
             _nodeToInsert.next = _nodeAfter.next;
             _nodeAfter.next = _nodeToInsert;
         }
-        // здесь будет ваш код вставки узла после заданного
-
-        // если _nodeAfter = null ,
-        // добавьте новый элемент первым в списке
     }
 
 }
