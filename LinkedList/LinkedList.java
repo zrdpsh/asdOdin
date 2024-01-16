@@ -1,3 +1,5 @@
+package LinkedList;
+
 import java.util.*;
 
 public class LinkedList
@@ -29,13 +31,14 @@ public class LinkedList
         return null;
     }
 
+
     public ArrayList<Node> findAll(int _value) {
         ArrayList<Node> nodes = new ArrayList<Node>();
         // здесь будет ваш код поиска всех узлов
         Node currentNode = this.head;
         while (currentNode.next != null) {
             if (currentNode.next.value == _value) {
-                nodes.put(_value);
+                nodes.add(currentNode);
             }
         }
         return nodes;
@@ -58,11 +61,16 @@ public class LinkedList
     public void removeAll(int _value)
     {
         // здесь будет ваш код удаления всех узлов по заданному значению
+        while (true) {
+            boolean flag = this.remove(_value);
+            if (flag == false) break;
+        }
     }
 
     public void clear()
     {
         // здесь будет ваш код очистки всего списка
+        head = null;
         head.next = tail;
     }
 
