@@ -35,26 +35,32 @@ public class LinkedList
     public ArrayList<Node> findAll(int _value) {
         ArrayList<Node> nodes = new ArrayList<Node>();
         Node currentNode = this.head;
-        do {
+        while (currentNode != null) {
             if (currentNode.value == _value) {
-                nodes.add(currentNode);
+                    nodes.add(currentNode);
             }
             currentNode = currentNode.next;
-        } while (currentNode.next != null);
+        }
         return nodes;
     }
 
-    public boolean remove(int _value)
-    {
-        Node targetNode = this.find(_value);
-        if (targetNode != null) {
-            Node previousNode = head;
-            while (previousNode.next != targetNode) previousNode = previousNode.next;
-            previousNode.next = targetNode.next;
+    public boolean remove(int _value) {
+        if (this.head == null) return false;
+        else if (this.head.value == _value) {
+            this.head = this.head.next;
             return true;
+        } else {
+            Node previousNode = this.head;
+            do {
+                if (previousNode.next.value == _value) {
+                    previousNode.next = previousNode.next.next;
+                    return true;
+                } else {
+                    previousNode = previousNode.next;
+                }
+            } while (previousNode.next != null);
         }
         return false;
-
     }
 
     public void removeAll(int _value)
@@ -68,14 +74,19 @@ public class LinkedList
     public void clear()
     {
         head = null;
-        head.next = tail;
+        tail = null;
     }
 
     public int count()
     {
         int res = 0;
-        while (this.head.next != null) {
+        Node previousNode = this.head;
+        if (this.head != null) {
             res++;
+            while (previousNode.next != null) {
+                previousNode = previousNode.next;
+                res++;
+            }
         }
         return res;
     }
