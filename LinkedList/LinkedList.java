@@ -67,6 +67,78 @@ public class LinkedList
         return false;
     }
 
+    public boolean remove2(int _value) 
+    {
+        if (this.head == null)
+        {
+            return false;
+        }
+        
+        Node currentNode = this.head;
+        if (currentNode.value == _value) {
+            if (currentNode.next == null) {
+                head = null;
+                tail = null;
+                return true;
+        } else {
+            while (true) {
+                previousNode = currentNode;
+                currentNode = currentNode.next;
+                if (currentNode.next != null) {
+                    if (currentNode.value == _value) {
+                        previousNode.next = currentNode.next;
+                        return true;
+                    }
+                } else {
+                    if (currentNode.value == _value) {
+                        previousNode.next = null;
+                        this.tail = previousNode;
+                        return true;
+                    } else {
+                        return false;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    public void removeAll2(int _value)
+    {
+            if (this.head == null)
+            {
+                return;
+            }
+            Node currentNode = this.head;
+            if (currentNode.value == _value) {
+                if (currentNode.next == null) {
+                    head = null;
+                    tail = null;
+            } else {
+                while (true) {
+                    previousNode = currentNode;
+                    currentNode = currentNode.next;
+                    if (currentNode.next != null) {
+                        if (currentNode.value = _value) {
+                            previousNode.next = currentNode.next;
+                        }
+                    } else {
+                        if (currentNode.value = _value) {
+                            previousNode.next = null;
+                            this.tail = previousNode;
+                            break;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    
     public void removeAll(int _value)
     {
 //        while (true) {
