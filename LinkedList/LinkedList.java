@@ -181,9 +181,11 @@ public class LinkedList
 
     public void insertAfter(Node _nodeAfter, Node _nodeToInsert)
     {
-        if (_nodeAfter == null) this.head = _nodeToInsert;
-        else {
-            _nodeToInsert.next = _nodeAfter.next;
+        if (_nodeAfter.next == null) {
+            _nodeAfter.next = _nodeToInsert;
+            this.tail = _nodeToInsert;
+        } else {
+            _nodeAfter.next.next = _nodeToInsert.next;
             _nodeAfter.next = _nodeToInsert;
         }
     }
