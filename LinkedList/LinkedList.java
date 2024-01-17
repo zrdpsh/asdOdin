@@ -44,30 +44,7 @@ public class LinkedList
         return nodes;
     }
 
-    public boolean remove(int _value) {
-        if (this.head == null)
-        {
-            this.tail = null;
-            return false;
-        }
-        else if (this.head.value == _value) {
-            this.head = this.head.next;
-            return true;
-        } else {
-            Node previousNode = this.head;
-            do {
-                if (previousNode.next.value == _value) {
-                    previousNode.next = previousNode.next.next;
-                    return true;
-                } else {
-                    previousNode = previousNode.next;
-                }
-            } while (previousNode.next != null);
-        }
-        return false;
-    }
-
-    public boolean remove2(int _value) 
+    public boolean remove(int _value)
     {
         if (this.head == null)
         {
@@ -80,9 +57,13 @@ public class LinkedList
                 head = null;
                 tail = null;
                 return true;
+            } else {
+                this.head = currentNode.next;
+                return true;
+            }
         } else {
             while (true) {
-                previousNode = currentNode;
+                Node previousNode = currentNode;
                 currentNode = currentNode.next;
                 if (currentNode.next != null) {
                     if (currentNode.value == _value) {
@@ -101,63 +82,44 @@ public class LinkedList
                 }
             }
         }
-    }
 
 
-    public void removeAll2(int _value)
+    public void removeAll(int _value)
     {
             if (this.head == null)
             {
                 return;
             }
             Node currentNode = this.head;
+            while (true) {
             if (currentNode.value == _value) {
                 if (currentNode.next == null) {
                     head = null;
                     tail = null;
+                    break;
+                } else {
+                    this.head = currentNode.next;
+                    currentNode = this.head;
+                }
             } else {
-                while (true) {
-                    previousNode = currentNode;
+                    Node previousNode = currentNode;
                     currentNode = currentNode.next;
                     if (currentNode.next != null) {
-                        if (currentNode.value = _value) {
+                        if (currentNode.value == _value) {
                             previousNode.next = currentNode.next;
+                            currentNode = previousNode;
                         }
                     } else {
-                        if (currentNode.value = _value) {
+                        if (currentNode.value == _value) {
                             previousNode.next = null;
                             this.tail = previousNode;
-                            break;
-                        } else {
-                            break;
                         }
+                        break;
                     }
                 }
             }
         }
-    }
 
-
-    
-    public void removeAll(int _value)
-    {
-//        while (true) {
-//            boolean flag = this.remove(_value);
-//            if (flag == false) break;
-//        }
-        Node currentNode = this.head;
-        while (true) {
-            Node previousNode = currentNode;
-            currentNode = currentNode.next;
-            if (currentNode != null) {
-                if (currentNode.value == _value) {
-                    currentNode = currentNode.next;
-                }
-            } else {
-                break;
-            }
-        }
-    }
 
     public void clear()
     {
