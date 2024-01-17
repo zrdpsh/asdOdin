@@ -11,22 +11,13 @@ class LinkedListTest {
     int UPPERBOUND = 5;
 
     @Test
-    void findAllMultiple() {
-        LinkedList testList = generateListWithSameValue(3);
-        ArrayList<Node> blueprintList = new ArrayList<>();
-        for (int i = 0; i < UPPERBOUND; i++) {
-            Node y = new Node(3);
-            blueprintList.add(y);
-        }
+    void findAllNull() {
+        LinkedList testList = new LinkedList();
 
-        ArrayList<Node> returnedNodes = testList.findAll(3);
+        ArrayList<Node> returnedNodes = testList.findAll(1);
 
-        Assertions.assertTrue(blueprintList.size() == returnedNodes.size());
-        for (int i = 0; i < returnedNodes.size(); i++) {
-            Assertions.assertTrue(returnedNodes.get(i).value == blueprintList.get(i).value);
-        }
+        Assertions.assertTrue(returnedNodes.size() == 0);
     }
-
     @Test
     void findAllOne() {
         LinkedList testList = new LinkedList();
@@ -44,14 +35,21 @@ class LinkedListTest {
 
 
     }
-
     @Test
-    void findAllNull() {
-        LinkedList testList = new LinkedList();
+    void findAllMultiple() {
+        LinkedList testList = generateListWithSameValue(3);
+        ArrayList<Node> blueprintList = new ArrayList<>();
+        for (int i = 0; i < UPPERBOUND; i++) {
+            Node y = new Node(3);
+            blueprintList.add(y);
+        }
 
-        ArrayList<Node> returnedNodes = testList.findAll(1);
+        ArrayList<Node> returnedNodes = testList.findAll(3);
 
-        Assertions.assertTrue(returnedNodes.size() == 0);
+        Assertions.assertTrue(blueprintList.size() == returnedNodes.size());
+        for (int i = 0; i < returnedNodes.size(); i++) {
+            Assertions.assertTrue(returnedNodes.get(i).value == blueprintList.get(i).value);
+        }
     }
 
 
@@ -66,7 +64,6 @@ class LinkedListTest {
         Assertions.assertTrue(testList.head == null);
         Assertions.assertTrue(testList.tail == null);
     }
-
     @Test
     void removeOne() {
         LinkedList testList = new LinkedList();
@@ -79,7 +76,6 @@ class LinkedListTest {
         Assertions.assertTrue(testResult);
         Assertions.assertTrue(testList.count() == 0);
     }
-
     @Test
     void removeFromLongList() {
         LinkedList testList = generateListWithSameValue(3);
@@ -89,6 +85,7 @@ class LinkedListTest {
         Assertions.assertTrue(testResult);
         Assertions.assertTrue(testList.count() == (UPPERBOUND-1));
     }
+
 
     @Test
     void removeAllNull() {
@@ -101,7 +98,6 @@ class LinkedListTest {
         Assertions.assertTrue(testList.tail == null);
 
     }
-
     @Test
     void removeAllOne() {
         LinkedList testList = new LinkedList();
@@ -116,8 +112,6 @@ class LinkedListTest {
         Assertions.assertTrue(testList.tail == null);
 
     }
-
-
     @Test
     void removeAllLongList() {
         LinkedList testList = generateListWithSameValue(4);
@@ -133,6 +127,35 @@ class LinkedListTest {
         Assertions.assertTrue(testList.tail.value == 4);
 
     }
+    @Test
+    void removeAllStartAndEnd() {
+        LinkedList testList = new LinkedList();
+
+        testList.addInTail(new Node(4));
+        testList.addInTail(new Node(4));
+        testList.addInTail(new Node(5));
+        testList.addInTail(new Node(4));
+        testList.addInTail(new Node(4));
+
+        testList.removeAll(4);
+
+        Assertions.assertTrue(testList.count() == 1);
+        Assertions.assertTrue(testList.find(5).value == 5);
+        Assertions.assertTrue(testList.head.value == 5);
+        Assertions.assertTrue(testList.tail.value == 5);
+    }
+    @Test
+    void removeAllNothing() {
+        LinkedList testList = generateListWithSameValue(3);
+
+        testList.removeAll(4);
+
+        Assertions.assertTrue(testList.count() == UPPERBOUND);
+        Assertions.assertTrue(testList.find(4) == null);
+        Assertions.assertTrue(testList.head.value == 3);
+        Assertions.assertTrue(testList.tail.value == 3);
+    }
+
 
     @Test
     void clearMultiple() {
@@ -155,7 +178,6 @@ class LinkedListTest {
         Assertions.assertTrue(testList.head == null);
         Assertions.assertTrue(testList.tail == null);
     }
-
     @Test
     void countOne() {
         LinkedList testList = new LinkedList();
@@ -167,7 +189,6 @@ class LinkedListTest {
         Assertions.assertTrue(testList.head.value == 4);
         Assertions.assertTrue(testList.tail.value == 4);
     }
-
     @Test
     void countMultiple() {
         LinkedList testList = generateListWithSameValue(3);
@@ -189,7 +210,6 @@ class LinkedListTest {
         Assertions.assertTrue(testList.count() == 1);
         Assertions.assertTrue(testList.find(5).value == 5);
     }
-
     @Test
     void insertAfterLast() {
         LinkedList testList = generateListWithSameValue(3);
@@ -202,7 +222,7 @@ class LinkedListTest {
         Assertions.assertTrue(testList.count() == 1);
         Assertions.assertTrue(testList.find(5).value == 5);
     }
-
+    @Test
     void insertAfterSome() {
         LinkedList testList = new LinkedList();
 
@@ -241,4 +261,6 @@ class LinkedListTest {
 
         return res;
     }
+
+
 }

@@ -92,34 +92,30 @@ public class LinkedList
             }
             Node currentNode = this.head;
             while (true) {
-            if (currentNode.value == _value) {
-                if (currentNode.next == null) {
-                    head = null;
-                    tail = null;
-                    break;
+                if (currentNode.value == _value) {
+                    if (currentNode.next == null) {
+                        head = null;
+                        tail = null;
+                        break;
+                    } else {
+                        this.head = currentNode.next;
+                        currentNode = this.head;
+                    }
                 } else {
-                    this.head = currentNode.next;
-                    currentNode = this.head;
-                }
-            } else {
-                    Node previousNode = currentNode;
-                    currentNode = currentNode.next;
                     if (currentNode.next != null) {
+                        Node previousNode = currentNode;
+                        currentNode = currentNode.next;
                         if (currentNode.value == _value) {
                             previousNode.next = currentNode.next;
                             currentNode = previousNode;
                         }
                     } else {
-                        if (currentNode.value == _value) {
-                            previousNode.next = null;
-                            this.tail = previousNode;
-                        }
+                        this.tail = currentNode;
                         break;
                     }
                 }
             }
         }
-
 
     public void clear()
     {
