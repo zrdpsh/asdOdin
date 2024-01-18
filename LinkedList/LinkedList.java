@@ -157,28 +157,31 @@ public class LinkedList
         Node fstLstNd = this.head;
         Node sndLstNd = snd.head;
 
-        if (fstLstNd.next != null && sndLstNd.next != null ) {
-            Node fstResNode = new Node(fstLstNd.value + sndLstNd.value);
-            res.addInTail(fstResNode);
-            res.head = fstResNode;
+        if (fstLstNd != null && sndLstNd != null ) {
+            Node resNode = new Node(fstLstNd.value + sndLstNd.value);
+            res.addInTail(resNode);
+            res.head = resNode;
+            res.tail = resNode;
+
             fstLstNd = fstLstNd.next;
             sndLstNd = sndLstNd.next;
-        }
 
-        while (true) {
-            if (fstLstNd.next != null && sndLstNd.next != null) {
-                res.addInTail(new Node(fstLstNd.value + sndLstNd.value));
-                fstLstNd = fstLstNd.next;
-                sndLstNd = sndLstNd.next;
-            } else if (fstLstNd.next == null && sndLstNd.next == null) {
-                Node finalNode = new Node (fstLstNd.value + sndLstNd.value)
-                res.addInTail(finalNode);
-                res.tail = finalNode;
-                return res;
-            } else {
-                return null;
+            while (true) {
+                if (fstLstNd != null && sndLstNd != null) {
+                    resNode = new Node(fstLstNd.value + sndLstNd.value);
+                    res.addInTail(resNode);
+                    fstLstNd = fstLstNd.next;
+                    sndLstNd = sndLstNd.next;
+
+                } else if (fstLstNd == null && sndLstNd == null) {
+                    res.tail = resNode;
+                    return res;
+                } else {
+                    return null;
+                }
             }
         }
+        return null;
     }
 
 

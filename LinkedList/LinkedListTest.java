@@ -308,4 +308,57 @@ class LinkedListTest {
     }
 
 
+    @Test
+    void solderTwoListsNull() {
+        LinkedList fst = new LinkedList();
+        LinkedList snd = new LinkedList();
+
+        LinkedList res = fst.solderTwoLists(snd);
+
+        Assertions.assertTrue(res == null);
+    }
+
+    @Test
+    void solderTwoListsOne() {
+        LinkedList fst = new LinkedList();
+        LinkedList snd = new LinkedList();
+        fst.addInTail(new Node(1));
+        snd.addInTail(new Node(1));
+
+        LinkedList res = fst.solderTwoLists(snd);
+
+        Assertions.assertTrue(res.count() == 1);
+        Assertions.assertTrue(res.head.value == 2);
+        Assertions.assertTrue(res.tail.value == 2);
+
+    }
+
+    @Test
+    void solderTwoListsMany() {
+        LinkedList fst = new LinkedList();
+        LinkedList snd = new LinkedList();
+        fst.addInTail(new Node(1));
+        snd.addInTail(new Node(1));
+        fst.addInTail(new Node(3));
+        snd.addInTail(new Node(3));
+
+        LinkedList res = fst.solderTwoLists(snd);
+
+        Assertions.assertTrue(res.count() == 2);
+        Assertions.assertTrue(res.head.value == 2);
+        Assertions.assertTrue(res.tail.value == 6);
+
+    }
+
+    @Test
+    void solderTwoListsUnequal() {
+        LinkedList fst = new LinkedList();
+        LinkedList snd = new LinkedList();
+        fst.addInTail(new Node(1));
+
+        LinkedList res = fst.solderTwoLists(snd);
+
+        Assertions.assertTrue(res == null);
+
+    }
 }
