@@ -17,6 +17,8 @@ class LinkedListTest {
         ArrayList<Node> returnedNodes = testList.findAll(1);
 
         Assertions.assertTrue(returnedNodes.size() == 0);
+        Assertions.assertTrue(testList.head == null);
+        Assertions.assertTrue(testList.tail == null);
     }
     @Test
     void findAllOne() {
@@ -32,6 +34,9 @@ class LinkedListTest {
 
         Assertions.assertTrue(blueprintList.size() == returnedNodes.size());
         Assertions.assertTrue(blueprintList.getFirst().value == returnedNodes.getFirst().value);
+        Assertions.assertTrue(testList.head.value == 1);
+        Assertions.assertTrue(testList.head.next == null);
+        Assertions.assertTrue(testList.tail.next == null);
 
 
     }
@@ -50,6 +55,9 @@ class LinkedListTest {
         for (int i = 0; i < returnedNodes.size(); i++) {
             Assertions.assertTrue(returnedNodes.get(i).value == blueprintList.get(i).value);
         }
+
+        Assertions.assertTrue(testList.head.value == 3);
+        Assertions.assertTrue(testList.tail.next == null);
     }
 
 
@@ -75,6 +83,8 @@ class LinkedListTest {
 
         Assertions.assertTrue(testResult);
         Assertions.assertTrue(testList.count() == 0);
+        Assertions.assertTrue(testList.head == null);
+        Assertions.assertTrue(testList.tail == null);
     }
     @Test
     void removeFromLongList() {
@@ -84,6 +94,8 @@ class LinkedListTest {
 
         Assertions.assertTrue(testResult);
         Assertions.assertTrue(testList.count() == (UPPERBOUND-1));
+        Assertions.assertTrue(testList.head.value == 3);
+        Assertions.assertTrue(testList.tail.next == null);
     }
 
 
@@ -169,6 +181,7 @@ class LinkedListTest {
 
     }
 
+
     @Test
     void countNull() {
         LinkedList testList = new LinkedList();
@@ -188,6 +201,7 @@ class LinkedListTest {
         Assertions.assertTrue(testList.count() == 1);
         Assertions.assertTrue(testList.head.value == 4);
         Assertions.assertTrue(testList.tail.value == 4);
+        Assertions.assertTrue(testList.tail.next == null);
     }
     @Test
     void countMultiple() {
@@ -196,8 +210,25 @@ class LinkedListTest {
         Assertions.assertTrue(testList.count() == UPPERBOUND);
         Assertions.assertTrue(testList.head.value == 3);
         Assertions.assertTrue(testList.tail.value == 3);
+        Assertions.assertTrue(testList.tail.next == null);
+
     }
 
+
+    @Test
+    void insertAfterNull() {
+        LinkedList testList = new LinkedList();
+
+        Node testNode = new Node(5);
+        testList.insertAfter(null, testNode);
+
+        Assertions.assertTrue(testList.count() == 1);
+        Assertions.assertTrue(testList.find(5).value == 5);
+        Assertions.assertTrue(testList.head.value == 5);
+        Assertions.assertTrue(testList.tail.value == 5);
+        Assertions.assertTrue(testList.head.next == null);
+        Assertions.assertTrue(testList.tail.next == null);
+    }
     @Test
     void insertAfterFirst() {
         LinkedList testList = generateListWithSameValue(3);
@@ -209,6 +240,10 @@ class LinkedListTest {
 
         Assertions.assertTrue(testList.count() == 1);
         Assertions.assertTrue(testList.find(5).value == 5);
+        Assertions.assertTrue(testList.head.value == 5);
+        Assertions.assertTrue(testList.tail.value == 5);
+        Assertions.assertTrue(testList.head.next == null);
+        Assertions.assertTrue(testList.tail.next == null);
     }
     @Test
     void insertAfterLast() {
@@ -221,6 +256,10 @@ class LinkedListTest {
 
         Assertions.assertTrue(testList.count() == 1);
         Assertions.assertTrue(testList.find(5).value == 5);
+        Assertions.assertTrue(testList.head.value == 5);
+        Assertions.assertTrue(testList.tail.value == 5);
+        Assertions.assertTrue(testList.head.next == null);
+        Assertions.assertTrue(testList.tail.next == null);
     }
     @Test
     void insertAfterSome() {
@@ -229,6 +268,8 @@ class LinkedListTest {
         testList.addInTail(new Node(1));
         Node specificNodeInsideList = new Node(2);
         testList.addInTail(specificNodeInsideList);
+        testList.addInTail(new Node(1));
+
         Node testNode = new Node(5);
 
         testList.insertAfter(specificNodeInsideList, testNode);
@@ -237,6 +278,10 @@ class LinkedListTest {
 
         Assertions.assertTrue(testList.count() == 1);
         Assertions.assertTrue(testList.find(5).value == 5);
+        Assertions.assertTrue(testList.head.value == 5);
+        Assertions.assertTrue(testList.tail.value == 5);
+        Assertions.assertTrue(testList.head.next == null);
+        Assertions.assertTrue(testList.tail.next == null);
     }
 
 
