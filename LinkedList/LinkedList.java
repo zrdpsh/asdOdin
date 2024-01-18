@@ -151,6 +151,37 @@ public class LinkedList
         }
     }
 
+    public LinkedList solderTwoLists(LinkedList snd) {
+        LinkedList res = new LinkedList();
+
+        Node fstLstNd = this.head;
+        Node sndLstNd = snd.head;
+
+        if (fstLstNd.next != null && sndLstNd.next != null ) {
+            Node fstResNode = new Node(fstLstNd.value + sndLstNd.value);
+            res.addInTail(fstResNode);
+            res.head = fstResNode;
+            fstLstNd = fstLstNd.next;
+            sndLstNd = sndLstNd.next;
+        }
+
+        while (true) {
+            if (fstLstNd.next != null && sndLstNd.next != null) {
+                res.addInTail(new Node(fstLstNd.value + sndLstNd.value));
+                fstLstNd = fstLstNd.next;
+                sndLstNd = sndLstNd.next;
+            } else if (fstLstNd.next == null && sndLstNd.next == null) {
+                Node finalNode = new Node (fstLstNd.value + sndLstNd.value)
+                res.addInTail(finalNode);
+                res.tail = finalNode;
+                return res;
+            } else {
+                return null;
+            }
+        }
+    }
+
+
 }
 
 class Node
@@ -163,3 +194,4 @@ class Node
         next = null;
     }
 }
+
