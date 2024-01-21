@@ -28,7 +28,6 @@ public class LinkedList2
 
     public Node find(int _value)
     {
-        // здесь будет ваш код поиска
         Node tmp = this.head;
         while(tmp != null) {
             if (tmp.value == _value) {
@@ -61,8 +60,8 @@ public class LinkedList2
 
         if (tmp.value == _value) {
             tmp = tmp.next;
+            tmp.prev = null;
             this.head = tmp;
-            this.head.prev = null;
             return true;
         }
 
@@ -97,8 +96,6 @@ public class LinkedList2
             this.head = tmp;
             this.head.prev = null;
         }
-
-        tmp = tmp.next;
 
         while (tmp.next != null) {
             if (tmp.value == _value) {
@@ -140,17 +137,20 @@ public class LinkedList2
             _nodeToInsert.next = this.head;
             this.head.prev = _nodeToInsert;
             this.head = _nodeToInsert;
-        } else {
-            _nodeToInsert.prev = _nodeAfter;
-            _nodeToInsert.next = _nodeAfter.next;
-            _nodeAfter.next = _nodeToInsert;
-
-            if (_nodeToInsert.next != null) {
-                _nodeToInsert.next.prev = _nodeToInsert;
-            } else {
-                this.tail = _nodeToInsert;
-            }
+            return;
         }
+
+        _nodeToInsert.prev = _nodeAfter;
+        _nodeToInsert.next = _nodeAfter.next;
+        _nodeAfter.next = _nodeToInsert;
+
+        if (_nodeToInsert.next == null) {
+            this.tail = _nodeToInsert;
+            return;
+        }
+
+        _nodeToInsert.next.prev = _nodeToInsert;
+
     }
 }
 

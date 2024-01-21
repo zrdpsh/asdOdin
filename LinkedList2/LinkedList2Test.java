@@ -108,13 +108,17 @@ class LinkedList2Test {
 
         testList.addInTail(new Node(7));
         testList.addInTail(new Node(5));
+        testList.addInTail(new Node(2007));
 
         boolean res = testList.remove(7);
 
-        Assertions.assertTrue(testList.count() == 1);
+        Assertions.assertTrue(testList.count() == 2);
         Assertions.assertTrue(res == true);
+
         Assertions.assertTrue(testList.head.value == 5);
-        Assertions.assertTrue(testList.tail.value == 5);
+        Assertions.assertTrue(testList.head.prev == null);
+
+        Assertions.assertTrue(testList.tail.value == 2007);
     }
 
     @Test
@@ -127,7 +131,10 @@ class LinkedList2Test {
         boolean res = testList.remove(8);
 
         Assertions.assertTrue(testList.count() == 2);
+
         Assertions.assertTrue(testList.head.value == 7);
+        Assertions.assertTrue(testList.head.prev == null);
+
         Assertions.assertTrue(testList.tail.value == 1995);
     }
 
@@ -154,8 +161,12 @@ class LinkedList2Test {
         testList.removeAll(5);
 
         Assertions.assertTrue(testList.count() == 1);
+
         Assertions.assertTrue(testList.head.value == 7);
+        Assertions.assertTrue(testList.head.prev == null);
+
         Assertions.assertTrue(testList.tail.value == 7);
+        Assertions.assertTrue(testList.tail.next == null);
     }
 
     @Test
@@ -171,8 +182,33 @@ class LinkedList2Test {
         testList.removeAll(1995);
 
         Assertions.assertTrue(testList.count() == 2);
+
         Assertions.assertTrue(testList.head.value == 7);
+        Assertions.assertTrue(testList.head.prev == null);
+
         Assertions.assertTrue(testList.tail.value == 8);
+        Assertions.assertTrue(testList.tail.next == null);
+    }
+
+    @Test
+    void removeAllFromTheMiddle() {
+        LinkedList2 testList = new LinkedList2();
+
+        testList.addInTail(new Node(7));
+        testList.addInTail(new Node(1995));
+        testList.addInTail(new Node(8));
+        testList.addInTail(new Node(1995));
+        testList.addInTail(new Node(9));
+
+        testList.removeAll(1995);
+
+        Assertions.assertTrue(testList.count() == 3);
+
+        Assertions.assertTrue(testList.head.value == 7);
+        Assertions.assertTrue(testList.head.prev == null);
+
+        Assertions.assertTrue(testList.tail.value == 9);
+        Assertions.assertTrue(testList.tail.next == null);
     }
 
     @Test
