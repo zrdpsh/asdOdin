@@ -1,0 +1,19 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¾ÃŠ™úÿÿÿÿ8º³ãÑ1
+q	java:S116"URename this field "UPPERBOUND" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( Â½·8Ã³ãÑ1
+`
+java:S1155">Use isEmpty() to check whether the collection is empty or not.(ÜŒ˜‹ûÿÿÿÿ8Å³ãÑ1
+\
+java:S1854½">Remove this useless assignment to local variable "testResult".(ÀÃÎ£8É³ãÑ1
+M
+java:S1481½"/Remove this unused "testResult" local variable.(ÀÃÎ£8Ê³ãÑ1
+[
+java:S1854¢"8Remove this useless assignment to local variable "rand".(šŸ«íøÿÿÿÿ8Ì³ãÑ1
+R
+java:S1172 "/Remove this unused method parameter "maxValue".(Ô©ÜÜûÿÿÿÿ8Ì³ãÑ1
+A
+java:S2119¢"Save and re-use this "Random".(šŸ«íøÿÿÿÿ8Í³ãÑ1
+L
+java:S1481¢")Remove this unused "rand" local variable.(šŸ«íøÿÿÿÿ8Í³ãÑ1
+M
+java:S5960"+Remove this assertion from production code.(ÜŒ˜‹ûÿÿÿÿ8Î³ãÑ1

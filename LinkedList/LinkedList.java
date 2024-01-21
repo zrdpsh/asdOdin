@@ -161,7 +161,6 @@ public class LinkedList
             Node resNode = new Node(fstLstNd.value + sndLstNd.value);
             res.addInTail(resNode);
             res.head = resNode;
-            res.tail = resNode;
 
             fstLstNd = fstLstNd.next;
             sndLstNd = sndLstNd.next;
