@@ -55,7 +55,6 @@ public class LinkedList2
 
     public boolean remove(int _value)
     {
-
         if (this.head == null) return false;
 
         Node tmp = this.head;
@@ -89,7 +88,31 @@ public class LinkedList2
 
     public void removeAll(int _value)
     {
-        // здесь будет ваш код удаления всех узлов по заданному значению
+        if (this.head == null) return;
+
+        Node tmp = this.head;
+
+        if (tmp.value == _value) {
+            tmp = tmp.next;
+            this.head = tmp;
+            this.head.prev = null;
+        }
+
+        tmp = tmp.next;
+
+        while (tmp.next != null) {
+            if (tmp.value == _value) {
+                tmp.prev.next = tmp.next;
+                tmp.next.prev = tmp.prev;
+            }
+            tmp = tmp.next;
+        }
+
+        if (tmp.value == _value) {
+            tmp = tmp.prev;
+            this.tail = tmp;
+            this.tail.next = null;
+        }
     }
 
     public void clear()
@@ -113,10 +136,21 @@ public class LinkedList2
 
     public void insertAfter(Node _nodeAfter, Node _nodeToInsert)
     {
-        // здесь будет ваш код вставки узла после заданного узла
+        if (_nodeAfter == null) {
+            _nodeToInsert.next = this.head;
+            this.head.prev = _nodeToInsert;
+            this.head = _nodeToInsert;
+        } else {
+            _nodeToInsert.prev = _nodeAfter;
+            _nodeToInsert.next = _nodeAfter.next;
+            _nodeAfter.next = _nodeToInsert;
 
-        // если _nodeAfter = null
-        // добавьте новый элемент первым в списке
+            if (_nodeToInsert.next != null) {
+                _nodeToInsert.next.prev = _nodeToInsert;
+            } else {
+                this.tail = _nodeToInsert;
+            }
+        }
     }
 }
 
