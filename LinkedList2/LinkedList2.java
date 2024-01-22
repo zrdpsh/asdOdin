@@ -95,6 +95,10 @@ public class LinkedList2
 
         if (tmp.value == _value) {
             tmp = tmp.next;
+            if (tmp == null) {
+                this.clear();
+                return;
+            }
             this.head = tmp;
             this.head.prev = null;
         }
