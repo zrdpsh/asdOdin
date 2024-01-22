@@ -139,9 +139,15 @@ public class LinkedList2
 
     public void insertAfter(Node _nodeAfter, Node _nodeToInsert)
     {
+        if (_nodeAfter == null && this.tail == null) {
+            this.addInTail(_nodeToInsert);
+            return;
+        }
+
         if (_nodeAfter == null) {
+            _nodeToInsert.prev = null;
             _nodeToInsert.next = this.head;
-            this.head.prev = _nodeToInsert;
+            _nodeToInsert.next.prev = _nodeToInsert;
             this.head = _nodeToInsert;
             return;
         }

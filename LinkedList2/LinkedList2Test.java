@@ -336,7 +336,18 @@ class LinkedList2Test {
     }
 
 
+    @Test
+    void insertAfterSingleElement() {
+        LinkedList2 testListInsert = new LinkedList2();
 
+        testListInsert.insertAfter(null, new Node(2007));
+
+        Assertions.assertTrue(testListInsert.count() == 1);
+        Assertions.assertTrue(testListInsert.head.value == 2007);
+        Assertions.assertTrue(testListInsert.head.prev == null);
+        Assertions.assertTrue(testListInsert.tail.value == 2007);
+        Assertions.assertTrue(testListInsert.tail.next == null);
+    }
 
     @Test
     void insertAfterNull() {
