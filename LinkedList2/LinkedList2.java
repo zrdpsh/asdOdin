@@ -1,5 +1,3 @@
-package LinkedList2;
-
 import java.util.*;
 
 public class LinkedList2
@@ -60,6 +58,10 @@ public class LinkedList2
 
         if (tmp.value == _value) {
             tmp = tmp.next;
+            if (tmp == null) {
+                this.clear();
+                return true;
+            }
             tmp.prev = null;
             this.head = tmp;
             return true;
