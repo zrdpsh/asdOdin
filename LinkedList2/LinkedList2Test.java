@@ -102,8 +102,25 @@ class LinkedList2Test {
         Assertions.assertTrue(testList.tail == null);
     }
 
+
     @Test
-    void removeOne() {
+    void removeOneFromOne() {
+        LinkedList2 testList = new LinkedList2();
+
+        testList.addInTail(new Node(7));
+
+        boolean res = testList.remove(7);
+
+        Assertions.assertTrue(testList.count() == 0);
+        Assertions.assertTrue(res == true);
+
+        Assertions.assertTrue(testList.head == null);
+
+        Assertions.assertTrue(testList.tail == null);
+    }
+
+    @Test
+    void removeOneFromMany() {
         LinkedList2 testList = new LinkedList2();
 
         testList.addInTail(new Node(7));
@@ -116,6 +133,26 @@ class LinkedList2Test {
         Assertions.assertTrue(res == true);
 
         Assertions.assertTrue(testList.head.value == 5);
+        Assertions.assertTrue(testList.head.prev == null);
+
+        Assertions.assertTrue(testList.tail.value == 2007);
+        Assertions.assertTrue(testList.tail.next == null);
+    }
+
+    @Test
+    void removeOneInTheMiddle() {
+        LinkedList2 testList = new LinkedList2();
+
+        testList.addInTail(new Node(7));
+        testList.addInTail(new Node(5));
+        testList.addInTail(new Node(2007));
+
+        boolean res = testList.remove(5);
+
+        Assertions.assertTrue(testList.count() == 2);
+        Assertions.assertTrue(res == true);
+
+        Assertions.assertTrue(testList.head.value == 7);
         Assertions.assertTrue(testList.head.prev == null);
 
         Assertions.assertTrue(testList.tail.value == 2007);
@@ -150,7 +187,48 @@ class LinkedList2Test {
     }
 
     @Test
-    void removeAllOne() {
+    void removeAllFirst() {
+        LinkedList2 testList = new LinkedList2();
+
+
+        testList.addInTail(new Node(5));
+        testList.addInTail(new Node(7));
+        testList.addInTail(new Node(9));
+
+        testList.removeAll(5);
+
+        Assertions.assertTrue(testList.count() == 2);
+
+        Assertions.assertTrue(testList.head.value == 7);
+        Assertions.assertTrue(testList.head.prev == null);
+
+        Assertions.assertTrue(testList.tail.value == 9);
+        Assertions.assertTrue(testList.tail.next == null);
+    }
+
+    @Test
+    void removeAllOneInMiddle() {
+        LinkedList2 testList = new LinkedList2();
+
+
+        testList.addInTail(new Node(5));
+        testList.addInTail(new Node(6));
+        testList.addInTail(new Node(7));
+        testList.addInTail(new Node(9));
+
+        testList.removeAll(7);
+
+        Assertions.assertTrue(testList.count() == 3);
+
+        Assertions.assertTrue(testList.head.value == 5);
+        Assertions.assertTrue(testList.head.prev == null);
+
+        Assertions.assertTrue(testList.tail.value == 9);
+        Assertions.assertTrue(testList.tail.next == null);
+    }
+
+    @Test
+    void removeAllTwo() {
         LinkedList2 testList = new LinkedList2();
 
 
