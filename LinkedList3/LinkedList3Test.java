@@ -14,7 +14,7 @@ class LinkedList3Test {
         Node res = testList.find(5);
         Assertions.assertTrue(testList.count() == 0);
         Assertions.assertTrue(res == null);
-        Assertions.assertTrue(testList.dummy() == null);
+        Assertions.assertTrue(testList.dummy().next == testList.dummy());
     }
 
     @Test
@@ -54,7 +54,7 @@ class LinkedList3Test {
         ArrayList<Node> res = testList.findAll(5);
 
         Assertions.assertTrue(res.size() == 0);
-        Assertions.assertTrue(testList.dummy() == null);
+        Assertions.assertTrue(testList.dummy().next == testList.dummy());
     }
 
     @Test
@@ -96,7 +96,7 @@ class LinkedList3Test {
 
         Assertions.assertTrue(testList.count() == 0);
         Assertions.assertTrue(res == false);
-        Assertions.assertTrue(testList.dummy() == null);
+        Assertions.assertTrue(testList.dummy().next == testList.dummy());
     }
 
 
@@ -111,7 +111,7 @@ class LinkedList3Test {
         Assertions.assertTrue(testList.count() == 0);
         Assertions.assertTrue(res == true);
 
-        Assertions.assertTrue(testList.dummy() == null);
+        Assertions.assertTrue(testList.dummy().next == testList.dummy());
     }
 
     @Test
@@ -179,7 +179,7 @@ class LinkedList3Test {
         testList.removeAll(5);
 
         Assertions.assertTrue(testList.count() == 0);
-        Assertions.assertTrue(testList.dummy() == null);
+        Assertions.assertTrue(testList.dummy().next == testList.dummy());
     }
 
     @Test
@@ -295,7 +295,7 @@ class LinkedList3Test {
 
         testList.clear();
         Assertions.assertTrue(testList.count() == 0);
-        Assertions.assertTrue(testList.dummy() == null);
+        Assertions.assertTrue(testList.dummy().next == testList.dummy());
     }
 
     @Test
@@ -303,7 +303,7 @@ class LinkedList3Test {
         LinkedList3 testList = new LinkedList3();
 
         Assertions.assertTrue(testList.count() == 0);
-        Assertions.assertTrue(testList.dummy() == null);
+        Assertions.assertTrue(testList.dummy().next == testList.dummy());
     }
 
     @Test

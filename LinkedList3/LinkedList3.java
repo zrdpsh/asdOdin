@@ -56,14 +56,14 @@ public class LinkedList3 {
     {
         Node tmp = this.dummy.next;
 
-        if (tmp != this.dummy) {
+        while (tmp != this.dummy) {
             if (tmp.value == _value) {
                 tmp.prev.next = tmp.next;
                 tmp.next.prev = tmp.prev;
                 return true;
             }
+            tmp = tmp.next;
         }
-
         return false;
     }
 
@@ -71,11 +71,12 @@ public class LinkedList3 {
     {
         Node tmp = this.dummy.next;
 
-        if (tmp != this.dummy) {
+        while (tmp != this.dummy) {
             if (tmp.value == _value) {
                 tmp.prev.next = tmp.next;
                 tmp.next.prev = tmp.prev;
             }
+            tmp = tmp.next;
         }
     }
 
@@ -101,10 +102,8 @@ public class LinkedList3 {
     public void insertAfter(Node _nodeAfter, Node _nodeToInsert)
     {
         if (_nodeAfter == null) {
-            this.addInTail(_nodeToInsert);
-            return;
+            _nodeAfter = this.dummy;
         }
-
         _nodeToInsert.prev = _nodeAfter;
         _nodeToInsert.next = _nodeAfter.next;
         _nodeAfter.next = _nodeToInsert;
