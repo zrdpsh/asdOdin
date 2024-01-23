@@ -11,3 +11,11 @@ J
 LinkedList/LinkedList.java,1\0\103279054a1dcd1c88a9846636622c2cd7ad8f31
 N
 LinkedList/LinkedListTest.java,d\c\dce1d3a37543c487f314928bb7145ebb388c4bc3
+P
+ LinkedList2/LinkedList2Test.java,9\b\9bdc70fa123bb112534dd77f018accbad7ee12fc
+L
+LinkedList2/LinkedList2.java,b\6\b6e16bff5ecc13376cd215c34dcf258e692915a2
+P
+ LinkedList3/LinkedList3Test.java,e\a\ea0b0965d53835a9f6463beacdee28c656c38269
+L
+LinkedList3/LinkedList3.java,5\0\501e2032b23939cd8b890b0f0aca640543df1580

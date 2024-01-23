@@ -1,34 +1,38 @@
-package LinkedList2;
+package LinkedList3;
 
-import java.util.*;
+import java.util.ArrayList;
 
-public class LinkedList2
-{
-    public Node head;
-    public Node tail;
+public class LinkedList3 {
 
-    public LinkedList2()
+    private DummyNode dummy;
+
+    public LinkedList3()
     {
-        head = null;
-        tail = null;
+        this.dummy = new DummyNode();
+    }
+
+    public DummyNode dummy() {
+        return this.dummy;
     }
 
     public void addInTail(Node _item)
     {
-        if (head == null) {
-            this.head = _item;
-            this.head.next = null;
-            this.head.prev = null;
+        if (this.dummy.next == null) {
+            this.dummy.next = _item;
+            this.dummy.prev = _item;
+            this.dummy.next.next = dummy;
+            this.dummy.prev.prev = dummy;
         } else {
-            this.tail.next = _item;
-            _item.prev = tail;
+            _item.prev = this.dummy.prev;
+            _item.next = this.dummy;
+
         }
-        this.tail = _item;
+        this.dummy.prev = _item;
     }
 
     public Node find(int _value)
     {
-        Node tmp = this.head;
+        Node tmp = this.dummy.next;
         while(tmp != null) {
             if (tmp.value == _value) {
                 return tmp;
@@ -42,7 +46,7 @@ public class LinkedList2
     {
         ArrayList<Node> nodes = new ArrayList<Node>();
 
-        Node tmp = this.head;
+        Node tmp = this.dummy.next;
         while(tmp != null) {
             if (tmp.value == _value) {
                 nodes.add(tmp);
@@ -54,9 +58,9 @@ public class LinkedList2
 
     public boolean remove(int _value)
     {
-        if (this.head == null) return false;
+        if (this.dummy == null) return false;
 
-        Node tmp = this.head;
+        Node tmp = this.dummy.next;
 
         if (tmp.value == _value) {
             tmp = tmp.next;
@@ -64,8 +68,8 @@ public class LinkedList2
                 this.clear();
                 return true;
             }
-            tmp.prev = null;
-            this.head = tmp;
+            tmp.prev = this.dummy;
+            this.dummy.next = tmp;
             return true;
         }
 
@@ -82,8 +86,8 @@ public class LinkedList2
 
         if (tmp.value == _value) {
             tmp = tmp.prev;
-            this.tail = tmp;
-            this.tail.next = null;
+            tmp.next = this.dummy;
+            this.dummy.prev = tmp;
             return true;
         }
         return false;
@@ -91,9 +95,9 @@ public class LinkedList2
 
     public void removeAll(int _value)
     {
-        if (this.head == null) return;
+        if (this.dummy == null) return;
 
-        Node tmp = this.head;
+        Node tmp = this.dummy.next;
 
         if (tmp.value == _value) {
             tmp = tmp.next;
@@ -101,8 +105,8 @@ public class LinkedList2
                 this.clear();
                 return;
             }
-            this.head = tmp;
-            this.head.prev = null;
+            this.dummy.next = tmp;
+            tmp.prev = this.dummy;
         }
 
         while (tmp.next != null) {
@@ -115,23 +119,22 @@ public class LinkedList2
 
         if (tmp.value == _value) {
             tmp = tmp.prev;
-            this.tail = tmp;
-            this.tail.next = null;
+            this.dummy.prev = tmp;
+            tmp.next = this.dummy;
         }
     }
 
     public void clear()
     {
-        this.head = null;
-        this.tail = null;
+        this.dummy = null;
     }
 
     public int count()
     {
         int res = 0;
 
-        Node tmp = this.head;
-        while(tmp != null) {
+        Node tmp = this.dummy.next;
+        while(tmp != this.dummy) {
             res+=1;
             tmp = tmp.next;
         }
@@ -141,32 +144,27 @@ public class LinkedList2
 
     public void insertAfter(Node _nodeAfter, Node _nodeToInsert)
     {
-        if (_nodeAfter == null && this.tail == null) {
+        if (_nodeAfter == null && this.dummy == null) {
             this.addInTail(_nodeToInsert);
             return;
         }
 
         if (_nodeAfter == null) {
-            _nodeToInsert.prev = null;
-            _nodeToInsert.next = this.head;
+            _nodeToInsert.prev = this.dummy;
+            _nodeToInsert.next = this.dummy.next;
             _nodeToInsert.next.prev = _nodeToInsert;
-            this.head = _nodeToInsert;
+            this.dummy.next = _nodeToInsert;
             return;
         }
 
         _nodeToInsert.prev = _nodeAfter;
         _nodeToInsert.next = _nodeAfter.next;
         _nodeAfter.next = _nodeToInsert;
-
-        if (_nodeToInsert.next == null) {
-            this.tail = _nodeToInsert;
-            return;
-        }
-
         _nodeToInsert.next.prev = _nodeToInsert;
 
     }
 }
+
 
 class Node
 {
@@ -180,4 +178,23 @@ class Node
         next = null;
         prev = null;
     }
+
+    public Node()
+    {
+        next = null;
+        prev = null;
+    }
 }
+
+class DummyNode extends Node
+{
+    public Node next;
+    public Node prev;
+
+    public DummyNode()
+    {
+        super();
+    }
+}
+
+
