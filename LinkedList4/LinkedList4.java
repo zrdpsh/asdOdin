@@ -1,4 +1,4 @@
-package LInkedList4;
+package LinkedList4;
 
 import java.util.ArrayList;
 
@@ -30,7 +30,7 @@ public class LinkedList4 {
         public Node find(int _value)
         {
             Node tmp = this.dummy.next;
-            while(tmp != this.dummy) {
+            while(!(tmp instanceof DummyNode)) {
                 if (tmp.value == _value) {
                     return tmp;
                 }
@@ -44,7 +44,7 @@ public class LinkedList4 {
             ArrayList<Node> nodes = new ArrayList<Node>();
 
             Node tmp = this.dummy.next;
-            while(tmp != this.dummy) {
+            while(!(tmp instanceof DummyNode)) {
                 if (tmp.value == _value) {
                     nodes.add(tmp);
                 }
@@ -57,7 +57,7 @@ public class LinkedList4 {
         {
             Node tmp = this.dummy.next;
 
-            while (tmp != this.dummy) {
+            while (!(tmp instanceof DummyNode)) {
                 if (tmp.value == _value) {
                     tmp.prev.next = tmp.next;
                     tmp.next.prev = tmp.prev;
@@ -72,7 +72,7 @@ public class LinkedList4 {
         {
             Node tmp = this.dummy.next;
 
-            while (tmp != this.dummy) {
+            while (!(tmp instanceof DummyNode)) {
                 if (tmp.value == _value) {
                     tmp.prev.next = tmp.next;
                     tmp.next.prev = tmp.prev;
@@ -92,7 +92,7 @@ public class LinkedList4 {
             int res = 0;
 
             Node tmp = this.dummy.next;
-            while(tmp != this.dummy) {
+            while(!(tmp instanceof DummyNode)) {
                 res+=1;
                 tmp = tmp.next;
             }

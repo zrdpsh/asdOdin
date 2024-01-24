@@ -19,3 +19,7 @@ P
  LinkedList3/LinkedList3Test.java,e\a\ea0b0965d53835a9f6463beacdee28c656c38269
 L
 LinkedList3/LinkedList3.java,5\0\501e2032b23939cd8b890b0f0aca640543df1580
+L
+LInkedList4/LinkedList4.java,4\d\4d6d53c995d529b7bafdc5f906b5390e51a877d5
+P
+ LInkedList4/LinkedList4Test.java,0\d\0d48bf29cd1c71d976ce0b8d569c28b41a80ef83
