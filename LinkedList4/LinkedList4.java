@@ -91,10 +91,10 @@ public class LinkedList4 {
         {
             int res = 0;
 
-            Node tmp = this.dummy.next;
-            while(!(tmp instanceof DummyNode)) {
+            Node temp = this.dummy.next;
+            while(!(temp instanceof DummyNode)) {
                 res+=1;
-                tmp = tmp.next;
+                temp = temp.next;
             }
 
             return res;
