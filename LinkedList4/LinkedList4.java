@@ -125,7 +125,7 @@ public class LinkedList4 {
             this.value = _value;
         }
 
-        public int getValue() {
+        public Object getValue() {
             return this.value;
         }
     }
@@ -140,8 +140,8 @@ public class LinkedList4 {
             super(_value);
         }
 
-        public int getValue() {
-            return -1;
+        public Object getValue() {
+            return null;
         }
     }
 
