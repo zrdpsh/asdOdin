@@ -128,10 +128,11 @@ public class LinkedList
         Node previousNode = this.head;
         if (this.head != null) {
             res++;
-            while (previousNode.next != null) {
-                previousNode = previousNode.next;
-                res++;
-            }
+//            while (previousNode.next != null) {
+//                previousNode = previousNode.next;
+//                res++;
+//            }
+            for (;previousNode.next != null; previousNode = previousNode.next) res++;
         }
         return res;
     }
