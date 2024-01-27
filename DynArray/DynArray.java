@@ -1,7 +1,4 @@
 package DynArray;
-
-import java.lang.reflect.Array;
-
 public class DynArray<T>
 {
     public T [] array;
@@ -21,8 +18,8 @@ public class DynArray<T>
     public void makeArray(int new_capacity)
     {
         // array = (T[]) Array.newInstance(this.clazz, new_capacity);
-        array = (T[]) Array.newInstance(this.clazz, new_capacity);
-        for (int i = 0; i < capacity; i++) array[i] = this.array[i];
+        T [] temp = new T[new_capacity];
+        for (int i = 0; i < capacity; i++) temp[i] = this.array[i];
         this.array = array;
         // ваш код
     }
@@ -33,22 +30,33 @@ public class DynArray<T>
         else return array[index];
 
         // ваш код
-        return null;
+//        return null;
     }
 
     public void append(T itm)
     {
         // ваш код
+        if (count > (capacity/2)) makeArray(capacity*2);
+        this.array[count] = itm;
+        this.count++;
     }
 
     public void insert(T itm, int index)
     {
         // ваш код
+        if ((count+1) > (capacity/2)) makeArray((int) (capacity*2));
+        for (int i = index; index < count; i++) {
+            this.array[i-1] = this.array[i];
+        }
     }
 
     public void remove(int index)
     {
         // ваш код
+        if ((count-1) > (capacity/2) && ((int)capacity/1.5)>16) makeArray((int) (capacity/1.5));
+        for (int i = index; index < count; i++) {
+            this.array[i-1] = this.array[i];
+        }
     }
 
 }
