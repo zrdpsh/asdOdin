@@ -2,7 +2,7 @@ package LinkedList2;
 
 import java.util.*;
 
-public class áLinkedList2
+public class LinkedList2
 {
     public Node head;
     public Node tail;
@@ -28,12 +28,9 @@ public class áLinkedList2
 
     public Node find(int _value)
     {
-        Node tmp = this.head;
-        while(tmp != null) {
-            if (tmp.value == _value) {
-                return tmp;
-            }
-            tmp = tmp.next;
+        for (Node tmp = this.head; tmp != null; tmp = tmp.next)
+        {
+            if (tmp.value == _value) return tmp;
         }
         return null;
     }
@@ -42,13 +39,11 @@ public class áLinkedList2
     {
         ArrayList<Node> nodes = new ArrayList<Node>();
 
-        Node tmp = this.head;
-        while(tmp != null) {
-            if (tmp.value == _value) {
-                nodes.add(tmp);
-            }
-            tmp = tmp.next;
+        for (Node tmp = this.head; tmp != null; tmp = tmp.next)
+        {
+            if (tmp.value == _value) nodes.add(tmp);
         }
+
         return nodes;
     }
 
@@ -71,13 +66,13 @@ public class áLinkedList2
 
         tmp = tmp.next;
 
-        while (tmp.next != null) {
+        for (;tmp.next != null; tmp = tmp.next)
+        {
             if (tmp.value == _value) {
                 tmp.prev.next = tmp.next;
                 tmp.next.prev = tmp.prev;
                 return true;
             }
-            tmp = tmp.next;
         }
 
         if (tmp.value == _value) {
@@ -105,12 +100,12 @@ public class áLinkedList2
             this.head.prev = null;
         }
 
-        while (tmp.next != null) {
+        for (;tmp.next != null; tmp = tmp.next)
+        {
             if (tmp.value == _value) {
                 tmp.prev.next = tmp.next;
                 tmp.next.prev = tmp.prev;
             }
-            tmp = tmp.next;
         }
 
         if (tmp.value == _value) {
