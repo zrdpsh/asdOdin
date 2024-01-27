@@ -23,13 +23,15 @@ public class DynArray<T>
         // array = (T[]) Array.newInstance(this.clazz, new_capacity);
         T[] temp = (T[]) Array.newInstance(this.clazz, new_capacity);;
         this.capacity = new_capacity;
-        for (int i = 0; i < capacity; i++) temp[i] = this.array[i];
+        if (this.array != null) {
+            for (int i = 0; i < count; i++) temp[i] = this.array[i];
+        }
         this.array = temp;
     }
 
     public T getItem(int index)
     {
-        if (index < 0 || index > this.capacity) throw new IndexOutOfBoundsException("Illegal index" + index);
+        if (index < 0 || index > this.capacity) throw new IndexOutOfBoundsException("Illegal index: " + index);
         else return this.array[index];
 
         // ваш код
@@ -39,7 +41,7 @@ public class DynArray<T>
     public void append(T itm)
     {
         // ваш код
-        if (count > (capacity/2)) makeArray(capacity*2);
+        if (count+1 > capacity) makeArray(capacity*2);
         this.array[count] = itm;
         this.count++;
     }
@@ -47,7 +49,9 @@ public class DynArray<T>
     public void insert(T itm, int index)
     {
         // ваш код
-        if ((count+1) > (capacity/2)) makeArray((int) (capacity*2));
+        if (index < 0 || index > this.capacity) throw new IndexOutOfBoundsException("Illegal index: " + index);
+
+        if ((count+1) > capacity) makeArray((int) (capacity*2));
         for (int i = index; index < count; i++) {
             this.array[i-1] = this.array[i];
         }
@@ -56,10 +60,24 @@ public class DynArray<T>
     public void remove(int index)
     {
         // ваш код
-        if ((count-1) > (capacity/2) && ((int)capacity/1.5)>16) makeArray((int) (capacity/1.5));
-        for (int i = index; index < count; i++) {
-            this.array[i-1] = this.array[i];
+        if (index < 0 || index > (this.capacity-1)) throw new IndexOutOfBoundsException("Illegal index: " + index);
+
+
+//        if ((count-1) > (capacity/2) && ((int)capacity/1.5)>16) makeArray((int) (capacity/1.5));
+        if ((count-1) < (capacity/2))
+        {
+            if (((int)capacity/1.5)>16)
+            {
+                makeArray((int) (capacity/1.5));
+            }
         }
+        for (int i = index; i < (count-1); i++) {
+            this.array[i] = this.array[i+1];
+        }
+
+        this.array[count-1] = null;
+
+        count--;
     }
 
 }
