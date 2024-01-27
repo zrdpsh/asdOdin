@@ -1,4 +1,7 @@
 package DynArray;
+
+import java.lang.reflect.Array;
+
 public class DynArray<T>
 {
     public T [] array;
@@ -18,16 +21,16 @@ public class DynArray<T>
     public void makeArray(int new_capacity)
     {
         // array = (T[]) Array.newInstance(this.clazz, new_capacity);
-        T [] temp = new T[new_capacity];
+        T[] temp = (T[]) Array.newInstance(this.clazz, new_capacity);;
+        this.capacity = new_capacity;
         for (int i = 0; i < capacity; i++) temp[i] = this.array[i];
-        this.array = array;
-        // ваш код
+        this.array = temp;
     }
 
     public T getItem(int index)
     {
         if (index < 0 || index > this.capacity) throw new IndexOutOfBoundsException("Illegal index" + index);
-        else return array[index];
+        else return this.array[index];
 
         // ваш код
 //        return null;
