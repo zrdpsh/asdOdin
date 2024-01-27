@@ -24,6 +24,9 @@ public class DynArray<T>
 
     public T getItem(int index)
     {
+        if (index < 0 || index > this.capacity) throw new IndexOutOfBoundsException("Illegal index" + index);
+
+        return array[index];
         // ваш код
         return null;
     }
