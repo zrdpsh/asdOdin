@@ -53,16 +53,16 @@ public class DynArray<T>
 
     public void remove(int index)
     {
-        if (index < 0 || index > (this.capacity-1)) throw new IndexOutOfBoundsException("Illegal index: " + index);
+        if (index < 0 || index > (this.count-1)) throw new IndexOutOfBoundsException("Illegal index: " + index);
 
-        if ((count-1) < (capacity/2))
+        if ((this.count-1) < (this.capacity/2))
         {
-            if ((capacity/1.5)>16)
+            if ((this.capacity/1.5)>16)
             {
-                makeArray((int) (capacity/1.5));
+                makeArray((int) (this.capacity/1.5));
             }
         }
-        for (int i = index; i < (count-1); i++) {
+        for (int i = index; i < (this.count-1); i++) {
             this.array[i] = this.array[i+1];
         }
 
