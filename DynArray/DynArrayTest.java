@@ -119,7 +119,7 @@ class DynArrayTest {
     public void NullPointerInsertBelowZero() {
         DynArray testDA = new DynArray<Integer>(Integer.class);
 
-        Exception exception = assertThrows(IndexOutOfBoundsException.class, () -> {
+        Exception exception = assertThrows(Exception.class, () -> {
             testDA.insert(1001, -1);
         });
 

@@ -29,6 +29,7 @@ public class DynArray<T>
     {
         if (index < 0 || index > this.capacity) throw new IndexOutOfBoundsException("Illegal index: " + index);
         else return this.array[index];
+
     }
 
     public void append(T itm)
@@ -39,16 +40,15 @@ public class DynArray<T>
         this.count++;
     }
 
-    public void insert(T itm, int index)
-    {
-        if (index < 0 || index > this.capacity) throw new IndexOutOfBoundsException("Illegal index: " + index);
+    public void insert(T itm, int index) {
+        if (index < 0 || index > this.count) throw new IndexOutOfBoundsException("Illegal index: " + index);
 
-        if ((count+1) > capacity) makeArray(capacity*2);
-        for (int i = count; i > index; i--) {
+        if ((this.count+1) > this.capacity) makeArray(this.capacity*2);
+        for (int i = this.count; i > index; i--) {
             this.array[i] = this.array[i-1];
         }
         this.array[index] = itm;
-        count++;
+        this.count++;
     }
 
     public void remove(int index)
