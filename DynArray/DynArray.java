@@ -11,8 +11,7 @@ public class DynArray<T>
 
     public DynArray(Class clz)
     {
-        clazz = clz; // нужен для безопасного приведения типов
-        // new DynArray<Integer>(Integer.class);
+        clazz = clz;
 
         count = 0;
         makeArray(16);
@@ -20,8 +19,7 @@ public class DynArray<T>
 
     public void makeArray(int new_capacity)
     {
-        // array = (T[]) Array.newInstance(this.clazz, new_capacity);
-        T[] temp = (T[]) Array.newInstance(this.clazz, new_capacity);;
+        T[] temp = (T[]) Array.newInstance(this.clazz, new_capacity);
         this.capacity = new_capacity;
         if (this.array != null) {
             for (int i = 0; i < count; i++) temp[i] = this.array[i];
@@ -33,9 +31,6 @@ public class DynArray<T>
     {
         if (index < 0 || index > this.capacity) throw new IndexOutOfBoundsException("Illegal index: " + index);
         else return this.array[index];
-
-        // ваш код
-//        return null;
     }
 
     public void append(T itm)
@@ -48,10 +43,9 @@ public class DynArray<T>
 
     public void insert(T itm, int index)
     {
-        // ваш код
         if (index < 0 || index > this.capacity) throw new IndexOutOfBoundsException("Illegal index: " + index);
 
-        if ((count+1) > capacity) makeArray((int) (capacity*2));
+        if ((count+1) > capacity) makeArray(capacity*2);
         for (int i = count; i > index; i--) {
             this.array[i] = this.array[i-1];
         }
@@ -61,14 +55,11 @@ public class DynArray<T>
 
     public void remove(int index)
     {
-        // ваш код
         if (index < 0 || index > (this.capacity-1)) throw new IndexOutOfBoundsException("Illegal index: " + index);
 
-
-//        if ((count-1) > (capacity/2) && ((int)capacity/1.5)>16) makeArray((int) (capacity/1.5));
         if ((count-1) < (capacity/2))
         {
-            if (((int)capacity/1.5)>16)
+            if ((capacity/1.5)>16)
             {
                 makeArray((int) (capacity/1.5));
             }
