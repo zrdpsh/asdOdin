@@ -39,7 +39,7 @@ public class DynArray<T>
 
         this.array[count] = itm;
 
-        if (itm != null) this.count++;
+        this.count++;
     }
 
     public void insert(T itm, int index) {
@@ -68,7 +68,7 @@ public class DynArray<T>
             this.array[i] = this.array[i+1];
         }
 
-        this.append(null);
+        this.array[count-1] = null;
 
         count--;
     }
