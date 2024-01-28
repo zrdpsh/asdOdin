@@ -63,11 +63,12 @@ public class DynArray<T>
             }
         }
 
-        for (int i = index; i < (this.count-1); i++) {
+        for (int i = index; i < (this.capacity-1); i++) {
             this.array[i] = this.array[i+1];
         }
 
         this.array[count-1] = null;
+
 
         count--;
     }

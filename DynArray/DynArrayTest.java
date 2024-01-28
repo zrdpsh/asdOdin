@@ -192,6 +192,24 @@ class DynArrayTest {
     }
 
     @Test
+    void removeWithoutOverloadFromTheMiddle() {
+        DynArray testDA = new DynArray<Integer>(Integer.class);
+
+        for (int i = 0; i < 16; i++) testDA.append(i);
+        testDA.remove(7);
+        testDA.insert(7, 7);
+        testDA.remove(7);
+
+        Integer a = (Integer) testDA.getItem(7);
+        Integer b = (Integer) testDA.getItem(15);
+
+        Assertions.assertTrue(testDA.count == 15);
+        Assertions.assertTrue(testDA.capacity == 16);
+        Assertions.assertTrue(a == 8);
+        Assertions.assertTrue(b == null);
+    }
+
+    @Test
     void removeWithOverloadFromTheBeginning() {
         DynArray testDA = new DynArray<Integer>(Integer.class);
 
