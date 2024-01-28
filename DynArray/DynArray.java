@@ -27,15 +27,14 @@ public class DynArray<T>
 
     public T getItem(int index)
     {
-        if (index < 0 || index > this.capacity) throw new IndexOutOfBoundsException("Illegal index: " + index);
+        if (index < 0 || index > (this.capacity-1)) throw new IndexOutOfBoundsException("Illegal index: " + index);
         else return this.array[index];
 
     }
 
     public void append(T itm)
     {
-        // ваш код
-        if (count+1 > capacity) makeArray(capacity*2);
+        if (this.count+1 > this.capacity) makeArray(this.capacity*2);
 
         this.array[count] = itm;
 
@@ -46,6 +45,7 @@ public class DynArray<T>
         if (index < 0 || index > this.count) throw new IndexOutOfBoundsException("Illegal index: " + index);
 
         if ((this.count+1) > this.capacity) makeArray(this.capacity*2);
+
         for (int i = this.count; i > index; i--) {
             this.array[i] = this.array[i-1];
         }
@@ -55,14 +55,8 @@ public class DynArray<T>
 
     public void remove(int index)
     {
-        if (index < 0 || index >= (this.count)) throw new IndexOutOfBoundsException("Illegal index: " + index);
+        if (index < 0 || index >= this.count) throw new IndexOutOfBoundsException("Illegal index: " + index);
 
-        if ((this.count-1)/(this.capacity/2) < 0.5)
-        {
-            makeArray((int) (this.capacity/1.5));
-
-            if ((this.capacity/1.5)<16) this.capacity = 16;
-        }
 
         for (int i = index; i < (this.count-1); i++) {
             this.array[i] = this.array[i+1];
@@ -71,6 +65,12 @@ public class DynArray<T>
         this.array[count-1] = null;
 
         count--;
-    }
 
+        if (1.0*(this.count)/(this.capacity) < 0.5)
+        {
+            makeArray((int) (this.capacity/1.5));
+
+            if ((this.capacity<16)) this.capacity = 16;
+        }
+    }
 }

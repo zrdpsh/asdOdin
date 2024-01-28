@@ -222,7 +222,7 @@ class DynArrayTest {
         Integer c = (Integer) testDA.getItem(15);
 
         Assertions.assertTrue(testDA.count == 15);
-        Assertions.assertTrue(testDA.capacity == 16);
+        Assertions.assertTrue(testDA.capacity == 21);
         Assertions.assertTrue(a == 2);
         Assertions.assertTrue(b == 16);
         Assertions.assertTrue(c == null);
@@ -240,7 +240,7 @@ class DynArrayTest {
         Integer b = (Integer) testDA.getItem(16);
 
         Assertions.assertTrue(testDA.count == 15);
-        Assertions.assertTrue(testDA.capacity == 16);
+        Assertions.assertTrue(testDA.capacity == 21);
         Assertions.assertTrue(a == null);
         Assertions.assertTrue(b == null);
     }
@@ -257,6 +257,23 @@ class DynArrayTest {
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
+    void removeAll() {
+        DynArray testDA = new DynArray<Integer>(Integer.class);
+
+        for (int i = 0; i < 16; i++) testDA.append(i);
+
+        for (int i = 0; i < 16; i++) testDA.remove(0);
+
+        Integer a = (Integer) testDA.getItem(0);
+        Integer b = (Integer) testDA.getItem(15);
+
+        Assertions.assertTrue(testDA.count == 0);
+        Assertions.assertTrue(testDA.capacity == 15);
+        Assertions.assertTrue(a == null);
+        Assertions.assertTrue(b == null);
     }
 
 }
