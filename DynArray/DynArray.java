@@ -36,8 +36,10 @@ public class DynArray<T>
     {
         // ваш код
         if (count+1 > capacity) makeArray(capacity*2);
+
         this.array[count] = itm;
-        this.count++;
+
+        if (itm != null) this.count++;
     }
 
     public void insert(T itm, int index) {
@@ -53,22 +55,20 @@ public class DynArray<T>
 
     public void remove(int index)
     {
-        if (index < 0 || index > (this.count-1)) throw new IndexOutOfBoundsException("Illegal index: " + index);
+        if (index < 0 || index >= (this.count)) throw new IndexOutOfBoundsException("Illegal index: " + index);
 
-        if ((this.count-1) < (this.capacity/2))
+        if ((this.count-1)/(this.capacity/2) < 0.5)
         {
-            if (((int) (this.capacity/1.5))>16)
-            {
-                makeArray((int) (this.capacity/1.5));
-            }
+            makeArray((int) (this.capacity/1.5));
+
+            if ((this.capacity/1.5)<16) this.capacity = 16;
         }
 
-        for (int i = index; i < (this.capacity-1); i++) {
+        for (int i = index; i < (this.count-1); i++) {
             this.array[i] = this.array[i+1];
         }
 
-        this.array[count-1] = null;
-
+        this.append(null);
 
         count--;
     }
