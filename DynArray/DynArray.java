@@ -1,7 +1,5 @@
 package DynArray;
 
-import java.lang.reflect.Array;
-
 public class DynArray<T>
 {
     public T [] array;
@@ -19,7 +17,7 @@ public class DynArray<T>
 
     public void makeArray(int new_capacity)
     {
-        T[] temp = (T[]) Array.newInstance(this.clazz, new_capacity);
+        T[] temp = (T[]) java.lang.reflect.Array.newInstance(this.clazz, new_capacity);
         this.capacity = new_capacity;
         if (this.array != null) {
             for (int i = 0; i < count; i++) temp[i] = this.array[i];
