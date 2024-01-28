@@ -271,7 +271,7 @@ class DynArrayTest {
         Integer b = (Integer) testDA.getItem(15);
 
         Assertions.assertTrue(testDA.count == 0);
-        Assertions.assertTrue(testDA.capacity == 15);
+        Assertions.assertTrue(testDA.capacity == 16);
         Assertions.assertTrue(a == null);
         Assertions.assertTrue(b == null);
     }

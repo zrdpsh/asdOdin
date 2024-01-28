@@ -68,9 +68,8 @@ public class DynArray<T>
 
         if (1.0*(this.count)/(this.capacity) < 0.5)
         {
-            makeArray((int) (this.capacity/1.5));
-
-            if ((this.capacity<16)) this.capacity = 16;
+            if ((this.capacity/1.5)>16) makeArray((int) (this.capacity/1.5));
+            else makeArray(16);
         }
     }
 }
