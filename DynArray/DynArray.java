@@ -57,11 +57,12 @@ public class DynArray<T>
 
         if ((this.count-1) < (this.capacity/2))
         {
-            if ((this.capacity/1.5)>16)
+            if (((int) (this.capacity/1.5))>16)
             {
                 makeArray((int) (this.capacity/1.5));
             }
         }
+
         for (int i = index; i < (this.count-1); i++) {
             this.array[i] = this.array[i+1];
         }

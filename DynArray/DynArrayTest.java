@@ -130,6 +130,36 @@ class DynArrayTest {
     }
 
     @Test
+    void removeNullElements() {
+
+        DynArray testDA = new DynArray<Integer>(Integer.class);
+
+        Exception exception = assertThrows(Exception.class, () -> {
+            testDA.remove(0);
+        });
+
+        String expectedMessage = "Illegal index";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
+    void removeOneElement() {
+        DynArray testDA = new DynArray<Integer>(Integer.class);
+
+
+        testDA.append(0);
+        testDA.remove(0);
+
+        Integer a = (Integer) testDA.getItem(0);
+
+        Assertions.assertTrue(testDA.count == 0);
+        Assertions.assertTrue(testDA.capacity == 16);
+        Assertions.assertTrue(a == null);
+    }
+
+    @Test
     void removeWithoutOverloadFromTheBeginning() {
         DynArray testDA = new DynArray<Integer>(Integer.class);
 
