@@ -51,7 +51,7 @@ class DynArrayTest {
         testDA.append(11);
 
         Integer a = (Integer) testDA.getItem(0);
-        Assertions.assertTrue(testDA.count == 9);
+        Assertions.assertTrue(testDA.count == 1);
         Assertions.assertTrue(testDA.capacity == 16);
         Assertions.assertTrue(a == 11);
     }
@@ -99,17 +99,22 @@ class DynArrayTest {
     }
 
     @Test
-    void insertBeforeZero() {
+    void InsertAtCountPosition() {
         DynArray testDA = new DynArray<Integer>(Integer.class);
 
-        testDA.insert(1001, -1);
+        for (int i = 0; i < 16; i++) testDA.append(i);
+
+        testDA.insert(1001, testDA.count);
+
+        Integer a = (Integer) testDA.getItem(testDA.count-1);
 
         Assertions.assertTrue(testDA.count == 17);
         Assertions.assertTrue(testDA.capacity == 32);
+        Assertions.assertTrue(a == 1001);
     }
 
     @Test
-    public void NullPointerExceptionBelowZero() {
+    public void NullPointerInsertBelowZero() {
         DynArray testDA = new DynArray<Integer>(Integer.class);
 
         Exception exception = assertThrows(IndexOutOfBoundsException.class, () -> {
@@ -188,6 +193,20 @@ class DynArrayTest {
         Assertions.assertTrue(testDA.capacity == 21);
         Assertions.assertTrue(a == null);
         Assertions.assertTrue(b == null);
+    }
+
+    @Test
+    public void NullPointerRemoveBelowZero() {
+        DynArray testDA = new DynArray<Integer>(Integer.class);
+
+        Exception exception = assertThrows(IndexOutOfBoundsException.class, () -> {
+            testDA.remove(-1);
+        });
+
+        String expectedMessage = "Illegal index";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
 }

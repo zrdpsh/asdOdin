@@ -52,9 +52,11 @@ public class DynArray<T>
         if (index < 0 || index > this.capacity) throw new IndexOutOfBoundsException("Illegal index: " + index);
 
         if ((count+1) > capacity) makeArray((int) (capacity*2));
-        for (int i = index; index < count; i++) {
-            this.array[i-1] = this.array[i];
+        for (int i = count; i > index; i--) {
+            this.array[i] = this.array[i-1];
         }
+        this.array[index] = itm;
+        count++;
     }
 
     public void remove(int index)
