@@ -15,7 +15,7 @@ public class Stack<T>
     public int size()
     {
         // размер текущего стека
-        return 0;
+        return linkedList.size();
     }
 
     public T pop()
