@@ -20,8 +20,13 @@ public class Stack<T>
 
     public T pop()
     {
-        // ваш код
-        return null;  // если стек пустой
+        try {
+            return linkedList.pop();
+        } catch (NoSuchElementException exception) {
+            return null;
+        }
+//        // ваш код
+//        return null;  // если стек пустой
     }
 
     public void push(T val)
