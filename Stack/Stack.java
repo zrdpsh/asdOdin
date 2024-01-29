@@ -4,8 +4,11 @@ import java.util.*;
 
 public class Stack<T>
 {
+    LinkedList<T> linkedList;
+
     public Stack()
     {
+        linkedList = new LinkedList<>();
         // инициализация внутреннего хранилища стека
     }
 
