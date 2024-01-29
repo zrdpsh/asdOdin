@@ -26,6 +26,7 @@ public class Stack<T>
 
     public void push(T val)
     {
+        linkedList.push(val);
         // ваш код
     }
 
