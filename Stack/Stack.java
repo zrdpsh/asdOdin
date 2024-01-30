@@ -38,6 +38,6 @@ public class Stack<T>
     public T peek()
     {
         // ваш код
-        return null; // если стек пустой
+        return linkedList.peek();
     }
 }
