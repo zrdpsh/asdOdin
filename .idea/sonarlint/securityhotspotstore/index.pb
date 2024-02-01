@@ -33,3 +33,5 @@ J
 DynArray/DynArrayTest.java,8\5\85ceb01aa04a12d6d5bd32f9aeba4a9a0382ef6d
 F
 DynArray/DynArray.java,5\1\51c4b30cf6fb397d98915cdfb45cadd558304b43
+@
+Stack/Stack.java,7\2\72c29738d69c5465a93d0afd9c362eec2e8e6077
