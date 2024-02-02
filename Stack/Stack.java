@@ -14,7 +14,6 @@ public class Stack<T>
 
     public int size()
     {
-        // размер текущего стека
         return linkedList.size();
     }
 
@@ -25,14 +24,11 @@ public class Stack<T>
         } catch (NoSuchElementException exception) {
             return null;
         }
-//        // ваш код
-//        return null;  // если стек пустой
     }
 
     public void push(T val)
     {
         linkedList.push(val);
-        // ваш код
     }
 
     public T peek()
