@@ -9,7 +9,6 @@ public class Stack<T>
     public Stack()
     {
         linkedList = new LinkedList<>();
-        // инициализация внутреннего хранилища стека
     }
 
     public int size()
@@ -21,7 +20,7 @@ public class Stack<T>
     {
         try {
             return linkedList.pop();
-        } catch (NoSuchElementException exception) {
+        } catch (NoSuchElementException e) {
             return null;
         }
     }
@@ -33,7 +32,6 @@ public class Stack<T>
 
     public T peek()
     {
-        // ваш код
         return linkedList.peek();
     }
 }
