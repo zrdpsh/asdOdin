@@ -24,6 +24,14 @@ class QueueTest {
     }
 
     @Test
+    void dequeueOne() {
+    }
+
+    @Test
+    void dequeueMany() {
+    }
+
+    @Test
     void size() {
     }
 }
