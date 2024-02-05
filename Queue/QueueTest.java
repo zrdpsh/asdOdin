@@ -7,8 +7,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class QueueTest {
 
     @Test
-    void enqueue() {
+    void enqueueNull() {
     }
+
+    @Test
+    void enqueueOne() {
+    }
+
+    @Test
+    void enqueueMany() {
+    }
+
 
     @Test
     void dequeue() {
