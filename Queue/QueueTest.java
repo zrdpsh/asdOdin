@@ -20,7 +20,7 @@ class QueueTest {
 
 
     @Test
-    void dequeue() {
+    void dequeueNull() {
     }
 
     @Test
