@@ -32,6 +32,10 @@ class QueueTest {
     }
 
     @Test
-    void size() {
+    void sizeNull() {
+    }
+
+    @Test
+    void sizeMany() {
     }
 }
