@@ -51,4 +51,9 @@ public class Stack<T>
         return (stack.peek() == null);
     }
 
+    public static int postfixCalc(String expr) {
+
+        return 0;
+    }
+
 }
