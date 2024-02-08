@@ -34,4 +34,21 @@ public class Stack<T>
     {
         return linkedList.peek();
     }
+
+    public static boolean symbolChecker(String str) {
+
+        Stack stack = new Stack();
+
+        for(int i = 0; i < str.length(); i++){
+
+            char c = str.charAt(i);
+
+            if (c == '(') stack.push(c);
+            else if (c == ')') stack.pop();
+            else break;
+
+        }
+        return (stack.peek() == null);
+    }
+
 }
