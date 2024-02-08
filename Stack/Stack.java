@@ -18,11 +18,11 @@ public class Stack<T>
 
     public T pop()
     {
-        try {
-            return linkedList.pop();
-        } catch (NoSuchElementException e) {
-            return null;
-        }
+        T r = null;
+
+        if (!linkedList.isEmpty()) r = linkedList.pop();
+
+        return r;
     }
 
     public void push(T val)
