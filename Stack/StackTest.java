@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
+import static Stack.Stack.postfixCalc;
 import static Stack.Stack.symbolChecker;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -145,5 +146,15 @@ class StackTest {
     @Test
     void symbolCheckerBasicFalse() {
         Assertions.assertFalse(symbolChecker("(()((())())"));
+    }
+
+    @Test
+    void postfixCalcBasic() {
+        Assertions.assertTrue(postfixCalc("1 2 + 3 *") == 9);
+    }
+
+    @Test
+    void postfixCalcExample() {
+        Assertions.assertTrue(postfixCalc("8 2 + 5 * 9 + =") == 59);
     }
 }

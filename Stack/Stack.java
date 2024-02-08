@@ -51,11 +51,32 @@ public class Stack<T>
         return (stack.peek() == null);
     }
 
+
     public static int postfixCalc(String expr) {
 
+        Stack<Comparable> parsedNumbers = new Stack();
 
+        int res = 0;
 
-        return 0;
+        for (int i = 0; i < expr.length(); i++) {
+            char s = expr.charAt(i);
+            switch (s) {
+                case '+':
+                    res = (int) parsedNumbers.pop() + (int) parsedNumbers.pop();
+                    parsedNumbers.push(res);
+                    break;
+                case '*':
+                    res = (int) parsedNumbers.pop() * (int) parsedNumbers.pop();
+                    parsedNumbers.push(res);
+                    break;
+                case '=':
+                case ' ':
+                    break;
+                default:
+                    parsedNumbers.push(Character.getNumericValue(s));
+            }
+        }
+
+        return (int) parsedNumbers.pop();
     }
-
 }
