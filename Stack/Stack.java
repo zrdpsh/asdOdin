@@ -48,7 +48,7 @@ public class Stack<T>
             else break;
 
         }
-        return (stack.peek() == null);
+        return (stack.size() == 0);
     }
 
 

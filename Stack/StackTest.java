@@ -149,6 +149,12 @@ class StackTest {
     }
 
     @Test
+    void symbolCheckerBasicFalseWithEqualNumberOfParenthesis() {
+        Assertions.assertFalse(symbolChecker("(()))("));
+    }
+
+
+    @Test
     void postfixCalcBasic() {
         Assertions.assertTrue(postfixCalc("1 2 + 3 *") == 9);
     }
