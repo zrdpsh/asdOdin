@@ -1,26 +1,33 @@
+package Queue;
+
 import java.util.*;
 
 public class Queue<T>
 {
+      private LinkedList<T> queue;
+
       public Queue()
       {
-       // инициализация внутреннего хранилища очереди
-      } 
+            queue = new LinkedList<>();
+      }
 
+      // O(1) - independent of collection length
       public void enqueue(T item)
       {
-        // вставка в хвост
+            queue.add(item);
       }
 
+
+      // O(1) - independent of collection length
       public T dequeue()
       {
-        // выдача из головы
-        return null; // null если очередь пустая
+            return queue.pollFirst();
       }
 
+      // O(1) - size is stored as a variable
       public int size()
       {
-        return 0; // размер очереди
+            return queue.size();
       }
 
 }
