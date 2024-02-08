@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
+import static Stack.Stack.symbolChecker;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StackTest {
@@ -128,5 +129,21 @@ class StackTest {
         for (int i = 0; i < ri; i++) testStack.push(i);
 
         Assertions.assertTrue(testStack.peek() == (ri-1));
+    }
+
+    @Test
+    void symbolCheckerNull() {
+        Assertions.assertTrue(symbolChecker(""));
+    }
+
+    @Test
+    void symbolCheckerBasicTrue() {
+        Assertions.assertTrue(symbolChecker("(()((())()))"));
+    }
+
+
+    @Test
+    void symbolCheckerBasicFalse() {
+        Assertions.assertFalse(symbolChecker("(()((())())"));
     }
 }
