@@ -153,6 +153,12 @@ class StackTest {
         Assertions.assertFalse(symbolChecker("(()))("));
     }
 
+    @Test
+    void symbolCheckerRightFirst() {
+        Assertions.assertFalse(symbolChecker("))()"));
+    }
+
+
 
     @Test
     void postfixCalcBasic() {
@@ -162,5 +168,20 @@ class StackTest {
     @Test
     void postfixCalcExample() {
         Assertions.assertTrue(postfixCalc("8 2 + 5 * 9 + =") == 59);
+    }
+
+    @Test
+    void postfixCalcSubtraction() {
+        Assertions.assertTrue(postfixCalc("1 2 + 3 -") == 0);
+    }
+
+    @Test
+    void postfixCalcDivision() {
+        Assertions.assertTrue(postfixCalc("1 2 + 6 * 54 /") == 2);
+    }
+
+    @Test
+    void postfixCalcDivisionMinimal() {
+        Assertions.assertTrue(postfixCalc("18 2 /") == 9);
     }
 }

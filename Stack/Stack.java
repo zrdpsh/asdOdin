@@ -48,7 +48,7 @@ public class Stack<T>
             else break;
 
         }
-        return (stack.size() == 0);
+        return (stack.peek() == null);
     }
 
 
@@ -57,6 +57,7 @@ public class Stack<T>
         Stack<Comparable> parsedNumbers = new Stack();
 
         int res = 0;
+        String bfr = "";
 
         for (int i = 0; i < expr.length(); i++) {
             char s = expr.charAt(i);
@@ -64,16 +65,31 @@ public class Stack<T>
                 case '+':
                     res = (int) parsedNumbers.pop() + (int) parsedNumbers.pop();
                     parsedNumbers.push(res);
+                    i++;
                     break;
                 case '*':
                     res = (int) parsedNumbers.pop() * (int) parsedNumbers.pop();
                     parsedNumbers.push(res);
+                    i++;
+                    break;
+                case '-':
+                    res = (int) parsedNumbers.pop() - (int) parsedNumbers.pop();
+                    parsedNumbers.push(res);
+                    i++;
+                    break;
+                case '/':
+                    res = (int) parsedNumbers.pop() / (int) parsedNumbers.pop();
+                    parsedNumbers.push(res);
+                    i++;
+                    break;
+                case ' ':
+                    parsedNumbers.push(Integer.parseInt(bfr));
+                    bfr = "";
                     break;
                 case '=':
-                case ' ':
                     break;
                 default:
-                    parsedNumbers.push(Character.getNumericValue(s));
+                    bfr += s;
             }
         }
 
