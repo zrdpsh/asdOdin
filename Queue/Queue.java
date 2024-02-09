@@ -1,5 +1,3 @@
-package Queue;
-
 import java.util.*;
 
 public class Queue<T>
@@ -16,7 +14,6 @@ public class Queue<T>
       {
             queue.add(item);
       }
-
 
       // O(1) - independent of collection length
       public T dequeue()
