@@ -182,6 +182,6 @@ class StackTest {
 
     @Test
     void postfixCalcDivisionMinimal() {
-        Assertions.assertTrue(postfixCalc("18 2 /") == 9);
+        Assertions.assertTrue(postfixCalc("2 18 /") == 9);
     }
 }

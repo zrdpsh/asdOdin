@@ -1,6 +1,12 @@
 package Stack;
 
 import java.util.*;
+import java.util.concurrent.Callable;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
+import java.util.function.IntBinaryOperator;
+
+import static java.util.Map.entry;
 
 public class Stack<T>
 {
@@ -56,43 +62,71 @@ public class Stack<T>
 
         Stack<Comparable> parsedNumbers = new Stack();
 
-        int res = 0;
-        String bfr = "";
+        int result = 0;
+        String buffer = "";
+
+        HashMap<Character, IntBinaryOperator> functions = new HashMap<>();
+        functions.put('+', (a, b) -> a+b);
+        functions.put('-', (a, b) -> a-b);
+        functions.put('*', (a, b) -> a*b);
+        functions.put('/', (a, b) -> a/b);
+
+//        Map<Character, BinaryOperator<Integer>> functions2 = Map.ofEntries(
+//                entry('+', Integer::sum),
+//                entry('-', (a, b) -> a-b),
+//                entry('*', (a, b) -> a*b),
+//                entry('/', (a, b) -> a/b)
+//        );
 
         for (int i = 0; i < expr.length(); i++) {
             char s = expr.charAt(i);
-            switch (s) {
-                case '+':
-                    res = (int) parsedNumbers.pop() + (int) parsedNumbers.pop();
-                    parsedNumbers.push(res);
-                    i++;
-                    break;
-                case '*':
-                    res = (int) parsedNumbers.pop() * (int) parsedNumbers.pop();
-                    parsedNumbers.push(res);
-                    i++;
-                    break;
-                case '-':
-                    res = (int) parsedNumbers.pop() - (int) parsedNumbers.pop();
-                    parsedNumbers.push(res);
-                    i++;
-                    break;
-                case '/':
-                    res = (int) parsedNumbers.pop() / (int) parsedNumbers.pop();
-                    parsedNumbers.push(res);
-                    i++;
-                    break;
-                case ' ':
-                    parsedNumbers.push(Integer.parseInt(bfr));
-                    bfr = "";
-                    break;
-                case '=':
-                    break;
-                default:
-                    bfr += s;
-            }
-        }
 
-        return (int) parsedNumbers.pop();
+            IntBinaryOperator op = null;
+            
+            Character.isDigit(s) ? buffer += s : Character.isWhitespace(s) ? parsedNumbers.push(Integer.parseInt(buffer)) : op = functions.get(s);
+
+            result = op.applyAsInt((Integer) parsedNumbers.pop(), (Integer) parsedNumbers.pop());
+//            switch (s) {
+//                case '+':
+//                    result= (int) parsedNumbers.pop() + (int) parsedNumbers.pop();
+//                    parsedNumbers.push(result);
+//                    break;
+//                case '*':
+//                    result= (int) parsedNumbers.pop() * (int) parsedNumbers.pop();
+//                    parsedNumbers.push(result);
+//                    break;
+//                case '-':
+//                    result= (int) parsedNumbers.pop() - (int) parsedNumbers.pop();
+//                    parsedNumbers.push(result);
+//                    break;
+//                case '/':
+//                    result= (int) parsedNumbers.pop() / (int) parsedNumbers.pop();
+//                    parsedNumbers.push(result);
+//                    break;
+//                case ' ':
+//                    parsedNumbers.push(Integer.parseInt(buffer));
+//                    buffer = "";
+//                    break;
+//                case '=':
+//                    break;
+//                default:
+//                    buffer += s;
+//            }
+            
+
+
+//            Character.isDigit(s) ? buffer += s : functions.get(s);
+//
+//            Character.isDigit(s) ? Character.is
+//                    parsedNumbers.push(Integer.parseInt(buffer))
+//                            :
+//                    ()-> {
+//                        IntBinaryOperator op = functions.get(s);
+//                        result = op((Integer) parsedNumbers.pop(), (Integer) parsedNumbers.pop());
+//                    };
+//
+//            IntBinaryOperator op = functions.get(s);
+//            result = op((Integer) parsedNumbers.pop(), (Integer) parsedNumbers.pop());
+        }
     }
 }
