@@ -158,7 +158,6 @@ class StackTest {
     }
 
 
-
     @Test
     void symbolCheckerNull2() {
         Assertions.assertTrue(symbolChecker2(""));
