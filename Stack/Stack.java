@@ -60,73 +60,41 @@ public class Stack<T>
 
     public static int postfixCalc(String expr) {
 
-        Stack<Comparable> parsedNumbers = new Stack();
+        Stack<Comparable> parsdNums = new Stack();
 
-        int result = 0;
         String buffer = "";
-
-        HashMap<Character, IntBinaryOperator> functions = new HashMap<>();
-        functions.put('+', (a, b) -> a+b);
-        functions.put('-', (a, b) -> a-b);
-        functions.put('*', (a, b) -> a*b);
-        functions.put('/', (a, b) -> a/b);
-
-//        Map<Character, BinaryOperator<Integer>> functions2 = Map.ofEntries(
-//                entry('+', Integer::sum),
-//                entry('-', (a, b) -> a-b),
-//                entry('*', (a, b) -> a*b),
-//                entry('/', (a, b) -> a/b)
-//        );
+        char prevChar = 'a';
 
         for (int i = 0; i < expr.length(); i++) {
             char s = expr.charAt(i);
 
-            IntBinaryOperator op = null;
-            
-            Character.isDigit(s) ? buffer += s : Character.isWhitespace(s) ? parsedNumbers.push(Integer.parseInt(buffer)) : op = functions.get(s);
+            if (s == '+') {
+                parsdNums.push((int) parsdNums.pop() + (int) parsdNums.pop());
+            }
+            if (s == '-') {
+                parsdNums.push((int) parsdNums.pop() - (int) parsdNums.pop());
+            }
+            if (s == '*') {
+                parsdNums.push((int) parsdNums.pop() * (int) parsdNums.pop());
+            }
+            if (s == '/') {
+                parsdNums.push((int) parsdNums.pop() / (int) parsdNums.pop());
+            }
 
-            result = op.applyAsInt((Integer) parsedNumbers.pop(), (Integer) parsedNumbers.pop());
-//            switch (s) {
-//                case '+':
-//                    result= (int) parsedNumbers.pop() + (int) parsedNumbers.pop();
-//                    parsedNumbers.push(result);
-//                    break;
-//                case '*':
-//                    result= (int) parsedNumbers.pop() * (int) parsedNumbers.pop();
-//                    parsedNumbers.push(result);
-//                    break;
-//                case '-':
-//                    result= (int) parsedNumbers.pop() - (int) parsedNumbers.pop();
-//                    parsedNumbers.push(result);
-//                    break;
-//                case '/':
-//                    result= (int) parsedNumbers.pop() / (int) parsedNumbers.pop();
-//                    parsedNumbers.push(result);
-//                    break;
-//                case ' ':
-//                    parsedNumbers.push(Integer.parseInt(buffer));
-//                    buffer = "";
-//                    break;
-//                case '=':
-//                    break;
-//                default:
-//                    buffer += s;
-//            }
-            
+            if (s == '=') {
+                return (int) parsdNums.pop();
+            }
 
+            if (Character.isDigit(s)) buffer += s;
 
-//            Character.isDigit(s) ? buffer += s : functions.get(s);
-//
-//            Character.isDigit(s) ? Character.is
-//                    parsedNumbers.push(Integer.parseInt(buffer))
-//                            :
-//                    ()-> {
-//                        IntBinaryOperator op = functions.get(s);
-//                        result = op((Integer) parsedNumbers.pop(), (Integer) parsedNumbers.pop());
-//                    };
-//
-//            IntBinaryOperator op = functions.get(s);
-//            result = op((Integer) parsedNumbers.pop(), (Integer) parsedNumbers.pop());
+            if (s == ' ' && Character.isDigit(prevChar)) {
+                parsdNums.push(Integer.parseInt(buffer));
+                buffer = "";
+            }
+
+            prevChar = s;
+
         }
+        return (int) parsdNums.pop();
     }
 }

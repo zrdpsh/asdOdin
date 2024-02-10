@@ -177,7 +177,12 @@ class StackTest {
 
     @Test
     void postfixCalcDivision() {
-        Assertions.assertTrue(postfixCalc("1 2 + 6 * 54 /") == 2);
+        Assertions.assertTrue(postfixCalc("1 2 + 6 * 54 /") == 3);
+    }
+
+    @Test
+    void postfixCalcEqualSign() {
+        Assertions.assertTrue(postfixCalc("1 2 + 6 * = 54 /") == 18);
     }
 
     @Test
