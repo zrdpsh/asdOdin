@@ -50,11 +50,25 @@ public class Stack<T>
             char c = str.charAt(i);
 
             if (c == '(') stack.push(c);
-            else if (c == ')') stack.pop();
-            else break;
+            if (c == ')') stack.pop();
 
         }
         return (stack.peek() == null);
+    }
+
+    public static boolean symbolChecker2(String str) {
+
+        int flg =  0;
+
+        for(int i = 0; i < str.length(); i++){
+
+            char c = str.charAt(i);
+
+            if (c == '(') flg += 1;
+            if (c == ')') flg -= 1;
+
+        }
+        return (flg == 0);
     }
 
 

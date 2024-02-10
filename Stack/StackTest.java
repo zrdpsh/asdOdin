@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static Stack.Stack.postfixCalc;
-import static Stack.Stack.symbolChecker;
+import static Stack.Stack.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StackTest {
@@ -156,6 +155,34 @@ class StackTest {
     @Test
     void symbolCheckerRightFirst() {
         Assertions.assertFalse(symbolChecker("))()"));
+    }
+
+
+
+    @Test
+    void symbolCheckerNull2() {
+        Assertions.assertTrue(symbolChecker2(""));
+    }
+
+    @Test
+    void symbolCheckerBasicTrue2() {
+        Assertions.assertTrue(symbolChecker2("(()((())()))"));
+    }
+
+
+    @Test
+    void symbolCheckerBasicFalse2() {
+        Assertions.assertFalse(symbolChecker2("(()((())())"));
+    }
+
+    @Test
+    void symbolCheckerBasicFalseWithEqualNumberOfParenthesis2() {
+        Assertions.assertTrue(symbolChecker2("(()))("));
+    }
+
+    @Test
+    void symbolCheckerRightFirst2() {
+        Assertions.assertFalse(symbolChecker2("))()"));
     }
 
 
