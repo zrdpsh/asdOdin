@@ -12,25 +12,12 @@ public class Queue2Stacks<T> {
     }
 
     public void enqueue(T item) {
-        if(len == 0){
-            head.push(item);
-        }else{
-            bd.push(item);
-        }
-        len++;
+
     }
 
     public T dequeue() {
         T elem;
-        if(len==1){
-            elem = head.pop();
-        }else{
-            elem = head.pop();
-            head.push(bd.pop());
-        }
-        if(len > 0)
-            len--;
-        return elem;
+
     }
 
     public int size() {
