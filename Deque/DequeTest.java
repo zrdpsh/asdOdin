@@ -112,4 +112,33 @@ class DequeTest {
 
         Assertions.assertTrue(tQueue.size() == 0);
     }
+
+
+    @Test
+    void isPalindromeOdd() {
+        Deque<Integer> tDeque = new Deque<Integer>();
+
+        Assertions.assertTrue(tDeque.isPalindrome("ghuygyuhg"));
+    }
+
+    @Test
+    void isPalindromeEven() {
+        Deque<Integer> tDeque = new Deque<Integer>();
+
+        Assertions.assertTrue(tDeque.isPalindrome("uyyu"));
+    }
+
+    @Test
+    void isPalindromeOne() {
+        Deque<Integer> tDeque = new Deque<Integer>();
+
+        Assertions.assertTrue(tDeque.isPalindrome("g"));
+    }
+
+    @Test
+    void isPalindromeFalse() {
+        Deque<Integer> tDeque = new Deque<Integer>();
+
+        Assertions.assertFalse(tDeque.isPalindrome("goggle"));
+    }
 }
