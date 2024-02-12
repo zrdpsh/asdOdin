@@ -71,4 +71,29 @@ class QueueTest {
         Assertions.assertTrue(tQueue.size() == (ri-3));
     }
 
+    @Test
+    void cycleQueueTwoItems() {
+        Queue<Integer> tQueue = new Queue<Integer>();
+
+        tQueue.enqueue(1900);
+        tQueue.enqueue(2666);
+
+        tQueue.cycleQueue(1);
+
+        Assertions.assertTrue(tQueue.dequeue() == 2666);
+    }
+
+    @Test
+    void cycleQueueCircle() {
+        Queue<Integer> tQueue = new Queue<Integer>();
+
+        for (int i = 1; i < 11; i++) tQueue.enqueue(i);
+
+        tQueue.cycleQueue(11);
+
+        Assertions.assertTrue(tQueue.dequeue() == 2);
+    }
+
+
+
 }
