@@ -15,16 +15,13 @@ public class Queue2Stacks<T> {
         for (int i = 0; i < len; i++) bd.push(tail.pop());
         tail.push(item);
         for (int i = 0; i < len; i++) tail.push(bd.pop());
-
+        
         len++;
-
     }
 
     public T dequeue() {
         T elem;
-
         return tail.pop();
-
     }
 
     public int size() {
