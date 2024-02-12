@@ -7,7 +7,7 @@ public class Queue2Stacks<T> {
 
     public Queue2Stacks() {
         tail = new Stack<T>();
-        bd = new StackRev<T>();
+        bd = new Stack<T>();
         len = 0;
     }
 
