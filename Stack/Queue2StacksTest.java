@@ -62,6 +62,7 @@ class Queue2StacksTest {
         Queue2Stacks<Integer> tQueue = new Queue2Stacks<Integer>();
 
         Random rand = new Random();
+
         int ri = rand.nextInt(10000);
 
         for (int i = 0; i < ri; i++) tQueue.enqueue(i);
