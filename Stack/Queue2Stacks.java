@@ -22,7 +22,7 @@ public class Queue2Stacks<T> {
 
     public T dequeue() {
         T elem;
-        len--;
+        if (len > 0) len--;
 
         return tail.pop();
 
