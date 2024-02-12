@@ -54,7 +54,7 @@ public class Stack<T>
             if (c == ')') stack.pop();
 
         }
-        return (stack.peek() == null);
+        return (stack.size() == 0);
     }
 
 
@@ -69,16 +69,24 @@ public class Stack<T>
             char s = expr.charAt(i);
 
             if (s == '+') {
-                parsdNums.push((int) parsdNums.pop() + (int) parsdNums.pop());
+                int t1 = (int) parsdNums.pop();
+                int t2 = (int) parsdNums.pop();
+                parsdNums.push(t1 + t2);
             }
             if (s == '-') {
-                parsdNums.push((int) parsdNums.pop() - (int) parsdNums.pop());
+                int t1 = (int) parsdNums.pop();
+                int t2 = (int) parsdNums.pop();
+                parsdNums.push((int) t1 - t2);
             }
             if (s == '*') {
-                parsdNums.push((int) parsdNums.pop() * (int) parsdNums.pop());
+                int t1 = (int) parsdNums.pop();
+                int t2 = (int) parsdNums.pop();
+                parsdNums.push((int) t1 * t2);
             }
             if (s == '/') {
-                parsdNums.push((int) parsdNums.pop() / (int) parsdNums.pop());
+                int t1 = (int) parsdNums.pop();
+                int t2 = (int) parsdNums.pop();
+                parsdNums.push((int) t1 / t2);
             }
 
             if (s == '=') {
