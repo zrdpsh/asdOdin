@@ -51,20 +51,20 @@ public class Deque<T>
      return len;
     }
 
-    public boolean isPalindrome(String s)
+    public boolean isPalindrome(String givenString)
     {
-        Deque<String> d = new Deque<String>();
+        Deque<String> deq = new Deque<String>();
 
-        String[] arrFromStr = s.toLowerCase().split("");
+        String[] newArr = givenString.toLowerCase().split("");
 
-        for (int i = 0; i < arrFromStr.length; i++) {
-            d.addTail(arrFromStr[i]);
+        for (int i = 0; i < newArr.length; i++) {
+            deq.addTail(newArr[i]);
         }
 
-        int arrLn = (arrFromStr.length-1)/2;
+        int arrLn = (newArr.length-1)/2;
 
         for (int i = 0; i < arrLn; i++) {
-            if (!d.removeTail().equals(d.removeFront())) return false;
+            if (!deq.removeTail().equals(deq.removeFront())) return false;
         }
         return true;
     }
