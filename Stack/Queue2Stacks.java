@@ -17,7 +17,6 @@ public class Queue2Stacks<T> {
         for (int i = 0; i < len; i++) tail.push(bd.pop());
 
         len++;
-
     }
 
     public T dequeue() {
@@ -25,8 +24,6 @@ public class Queue2Stacks<T> {
         if (len > 0) len--;
 
         return tail.pop();
-
-
     }
 
     public int size() {
