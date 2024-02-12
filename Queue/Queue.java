@@ -29,4 +29,8 @@ public class Queue<T>
             return queue.size();
       }
 
+      public void cycleQueue(int hm) {
+            for (int i = 0; i < hm; i++) this.enqueue(this.dequeue());
+      }
+
 }
