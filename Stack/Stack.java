@@ -68,24 +68,19 @@ public class Stack<T>
         for (int i = 0; i < expr.length(); i++) {
             char s = expr.charAt(i);
 
+            int t1 = (int) parsdNums.pop();
+            int t2 = (int) parsdNums.pop();
+
             if (s == '+') {
-                int t1 = (int) parsdNums.pop();
-                int t2 = (int) parsdNums.pop();
                 parsdNums.push(t1 + t2);
             }
             if (s == '-') {
-                int t1 = (int) parsdNums.pop();
-                int t2 = (int) parsdNums.pop();
                 parsdNums.push((int) t1 - t2);
             }
             if (s == '*') {
-                int t1 = (int) parsdNums.pop();
-                int t2 = (int) parsdNums.pop();
                 parsdNums.push((int) t1 * t2);
             }
             if (s == '/') {
-                int t1 = (int) parsdNums.pop();
-                int t2 = (int) parsdNums.pop();
                 parsdNums.push((int) t1 / t2);
             }
 
