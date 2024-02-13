@@ -72,4 +72,24 @@ class Queue2StacksTest {
         Assertions.assertTrue(tQueue.dequeue() == 2);
         Assertions.assertTrue(tQueue.size() == (ri-3));
     }
+
+    @Test
+    void dequeueCheckerAdding() {
+
+        Queue2Stacks<Integer> tQueue = new Queue2Stacks<Integer>();
+
+        Random rand = new Random();
+
+        int ri = rand.nextInt(10000/2);
+
+        for (int i = 0; i < ri; i++) {
+            tQueue.enqueue(i);
+            tQueue.enqueue(i);
+            tQueue.dequeue();
+        }
+
+        int tmp = tQueue.dequeue();
+        Assertions.assertTrue(tmp == ri/2);
+        Assertions.assertTrue(tQueue.size() == (ri-1));
+    }
 }

@@ -1,29 +1,36 @@
 package Stack;
 
 public class Queue2Stacks<T> {
+    private Stack<T> head;
     private Stack<T> tail;
-    private Stack<T> bd;
     private int len;
 
     public Queue2Stacks() {
+        head = new Stack<T>();
         tail = new Stack<T>();
-        bd = new Stack<T>();
         len = 0;
     }
 
     public void enqueue(T item) {
-        for (int i = 0; i < len; i++) bd.push(tail.pop());
-        tail.push(item);
-        for (int i = 0; i < len; i++) tail.push(bd.pop());
-
+        head.push(item);
         len++;
     }
 
     public T dequeue() {
-        T elem;
+        if (tail.size() == 0) fillTail();
+
+        T elem = tail.pop();
+
         if (len > 0) len--;
 
-        return tail.pop();
+        return elem;
+    }
+
+    private void fillTail() {
+        int sz = this.head.size();
+        for (int i = 0; i < sz; i+=1) {
+            this.tail.push(this.head.pop());
+        }
     }
 
     public int size() {
