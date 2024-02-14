@@ -19,9 +19,9 @@ public class Queue2Stacks<T> {
     public T dequeue() {
         if (tail.size() == 0) fillTail();
 
-        T elem = tail.pop();
-
         if (len > 0) len--;
+
+        T elem = tail.pop();
 
         return elem;
     }
