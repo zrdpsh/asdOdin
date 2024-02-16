@@ -41,3 +41,15 @@ D
 Queue/Queue.java,5\0\500bf24ecbac1f37d0411e444e7c62c29237648d
 D
 Queue/QueueTest.java,f\6\f6017f0f524e7e96f65ab09160c1decbe6d91602
+G
+Stack/StackRevTest.java,8\7\872a84982a4673168ebbaef47b2058f53ed30fa8
+C
+Stack/StackRev.java,2\6\262c8988ba4c3cc3d0d7117584e6f7a9cd1bc4fb
+D
+Deque/DequeTest.java,b\9\b9685716fdf78dd4f250a674e6a2db61ff203c13
+@
+Deque/Deque.java,9\0\90f45dc0e446139bfc592aa10567b16e9cca15bb
+G
+Stack/Queue2Stacks.java,0\e\0e9eee97d099ed8c80692ada921c501d758c88a5
+K
+Stack/Queue2StacksTest.java,0\8\08f12ce9f72ba85e6af921997b5af3c6ce60deed
