@@ -54,9 +54,6 @@ import java.util.*;
             this.head = nd;
         }
 
-//        this.tail = _item;
-        // автоматическая вставка value 
-        // в нужную позицию
     }
 
     public Node<T> find(T val)
@@ -76,7 +73,29 @@ import java.util.*;
 
     public void delete(T val)
     {
-        // здесь будет ваш код
+        Node<T> nd = find(val);
+        if (nd == null) return;
+
+        if (this.head == this.tail) {
+             this.clear(true);
+             return;
+        }
+
+        if (nd.prev == null) {
+            this.head = nd.next;
+            nd.next.prev = null;
+            return;
+        }
+
+        if (nd.next == null) {
+            this.tail = nd.prev;
+            nd.prev.next = null;
+            return;
+        }
+
+        nd.prev.next = nd.next;
+        nd.next.prev = nd.prev;
+
     }
 
     public void clear(boolean asc)
