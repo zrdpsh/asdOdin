@@ -52,58 +52,59 @@ import java.util.*;
 
     public void add(T value)
     {
-        Node<T> nd = new Node<>(value);
+        Node<T> nodeAdded = new Node<>(value);
         if (head == null) {
-            this.head = nd;
-            this.tail = nd;
+            this.head = nodeAdded;
+            this.tail = nodeAdded;
             len++;
             return;
         }
 
-        Node<T> tmpNd = this.head;
+        Node<T> currNode = this.head;
 
-        if (_ascending && (compare(nd.value, tmpNd.value) < 0)) {
-            addInHead(nd, tmpNd);
-            return;
+        if (addNode(-1, nodeAdded, currNode)) return;
+
+
+        for (;currNode.next != null; currNode = currNode.next) {
+            if (addNode(0, nodeAdded, currNode)) return;
         }
 
-        if (!_ascending && (compare(nd.value, tmpNd.value) > 0)) {
-            addInHead(nd, tmpNd);
-            return;
-        }
+        if (addNode(1, nodeAdded, currNode)) return;
 
-        for (;tmpNd.next != null; tmpNd = tmpNd.next) {
-            if (_ascending && (compare(nd.value, tmpNd.value) < 0)) {
-                tmpNd.prev.next = nd;
-                nd.next = tmpNd;
-                len++;
-                return;
-            }
-
-            if (!_ascending && (compare(nd.value, tmpNd.value) > 0)) {
-                tmpNd.prev.next = nd;
-                nd.next = tmpNd;
-                len++;
-                return;
-            }
-        }
-
-        if (_ascending && (compare(nd.value, tmpNd.value) < 0)) {
-            addBeforeTail(nd, tmpNd);
-            return;
-        }
-
-        if (!_ascending && (compare(nd.value, tmpNd.value) > 0)) {
-            addBeforeTail(nd, tmpNd);
-            return;
-        }
-
-        nd.prev = tmpNd;
-        nd.prev.next = nd;
-        nd.next = null;
-        this.tail = nd;
+        nodeAdded.prev = currNode;
+        nodeAdded.prev.next = nodeAdded;
+        nodeAdded.next = null;
+        this.tail = nodeAdded;
         len++;
 
+    }
+
+    private boolean addNode(int flag, Node<T> v1, Node<T> v2) {
+
+        boolean nextIsGreater = nextIsGreaterThanGiven(v1, v2);
+
+        boolean canAdd = !(_ascending ^ nextIsGreater);
+
+        if (flag == -1 && canAdd) {
+            addInHead(v1, v2);
+            return true;
+        }
+
+        if (flag == 0 && canAdd) {
+            addInMiddle(v1, v2);
+            return true;
+        }
+
+        if (flag == 1 && canAdd) {
+            addBeforeTail(v1, v2);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean nextIsGreaterThanGiven(Node<T> v1, Node<T> v2) {
+        if (compare(v1.value, v2.value) < 0) return true;
+        return false;
     }
 
     private void addInHead(Node<T> added, Node<T> moved) {
@@ -114,7 +115,15 @@ import java.util.*;
         this.len++;
     }
 
-      private void addBeforeTail(Node<T> added, Node<T> moved) {
+    private void addInMiddle(Node<T> added, Node<T> moved) {
+            moved.prev.next = added;
+            added.prev = moved.prev;
+            moved.prev = added;
+            added.next = moved;
+            len++;
+        }
+
+    private void addBeforeTail(Node<T> added, Node<T> moved) {
           added.prev = moved.prev;
           added.prev.next = added;
           added.next = moved;
@@ -122,7 +131,6 @@ import java.util.*;
           len++;
       }
 
-//    private void addWithFlag
 
     public Node<T> find(T val)
     {
@@ -174,7 +182,6 @@ import java.util.*;
         this.head = null;
         this.tail = null;
         len = 0;
-        // здесь будет ваш код
     }
 
     public int count()
