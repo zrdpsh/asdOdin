@@ -1,3 +1,4 @@
+import javax.print.DocFlavor;
 import java.util.*;
 
 
@@ -32,18 +33,30 @@ import java.util.*;
     {
         int res = 0;
 
-        if (v1.value > v2.value) return 1;
-        if (v1.value == v2.value) return 0;
-        if (v1.value < v2.value) return -1;
+        if (v1.getClass() == Integer.class) res = ((Integer) v1).compareTo((Integer) v2);
 
-        // -1 если v1 < v2
-        // 0 если v1 == v2
-        // +1 если v1 > v2
+        if (v1.getClass() == String.class) {
+            String str1 = ((String) v1).trim();
+            String str2 = ((String) v2).trim();
+            res = str1.compareTo(str2);
+        }
+
+        if (res < 0) res = -1;
+        if (res > 0) res = 1;
+
+        return res;
     }
 
     public void add(T value)
     {
+        Node<T> nd = new Node<>(value);
+        if (head == null) {
+            this.head = nd;
+        }
 
+
+
+//        this.tail = _item;
         // автоматическая вставка value 
         // в нужную позицию
     }

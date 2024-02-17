@@ -28,6 +28,8 @@ class OrderedListTest {
 
     @Test
     void count() {
+//        int res = -8 | 0;
+//        System.out.println(res);
     }
 
     @Test
