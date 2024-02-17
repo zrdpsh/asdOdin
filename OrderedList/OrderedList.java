@@ -32,12 +32,13 @@ import java.util.*;
     {
         int res = 0;
 
-        res = ((Integer)v1).compareTo((Integer) v2);
+        if (v1.value > v2.value) return 1;
+        if (v1.value == v2.value) return 0;
+        if (v1.value < v2.value) return -1;
 
         // -1 если v1 < v2
         // 0 если v1 == v2
         // +1 если v1 > v2
-        return res;
     }
 
     public void add(T value)
@@ -51,7 +52,9 @@ import java.util.*;
     {
         Node<T> nd = this.head;
 
-
+        for (int i = 0; i < this.len; i++) {
+            if (nd.compare())
+        }
         return null; // здесь будет ваш код
     }
 
