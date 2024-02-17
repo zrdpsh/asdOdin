@@ -54,8 +54,6 @@ import java.util.*;
             this.head = nd;
         }
 
-
-
 //        this.tail = _item;
         // автоматическая вставка value 
         // в нужную позицию
@@ -65,8 +63,12 @@ import java.util.*;
     {
         Node<T> nd = this.head;
 
+        int compareRes = this.compare(nd.value, val);
+
         for (int i = 0; i < this.len; i++) {
-            if (this.compare(nd.value, val) == 0) return nd;
+            if (compareRes == 0) return nd;
+            if (this._ascending && compareRes < 0) return null;
+            if ((!this._ascending) && compareRes > 0) return null;
             nd = nd.next;
         }
         return null;
@@ -91,8 +93,7 @@ import java.util.*;
        return len;
     }
 
-    ArrayList<Node<T>> getAll() // выдать все элементы упорядоченного 
-                           // списка в виде стандартного списка
+    ArrayList<Node<T>> getAll()
     {
         ArrayList<Node<T>> r = new ArrayList<Node<T>>();
         Node<T> node = head;
