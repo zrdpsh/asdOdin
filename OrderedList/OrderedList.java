@@ -68,7 +68,7 @@ import java.util.*;
 
     public int count()
     {
-       return 0; // здесь будет ваш код подсчёта количества элементов в списке
+       return len;
     }
 
     ArrayList<Node<T>> getAll() // выдать все элементы упорядоченного 
