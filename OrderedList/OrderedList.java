@@ -18,20 +18,24 @@ import java.util.*;
   {
     public Node<T> head, tail;
     private boolean _ascending;
+    private int len;
 
     public OrderedList(boolean asc)
     {
       head = null;
       tail = null;
       _ascending = asc;
+      len = 0;
     }
 
     public int compare(T v1, T v2)
     {
-      return 0;
-      // -1 если v1 < v2
-      // 0 если v1 == v2
-      // +1 если v1 > v2
+        int res = 0;
+
+        // -1 если v1 < v2
+        // 0 если v1 == v2
+        // +1 если v1 > v2
+      return res;
     }
 
     public void add(T value)
@@ -42,6 +46,9 @@ import java.util.*;
 
     public Node<T> find(T val)
     {
+        Node<T> nd = this.head;
+
+
         return null; // здесь будет ваш код
     }
 
@@ -53,6 +60,9 @@ import java.util.*;
     public void clear(boolean asc)
     {
         _ascending = asc;
+        this.head = null;
+        this.tail = null;
+        len = 0;
         // здесь будет ваш код
     }
 
