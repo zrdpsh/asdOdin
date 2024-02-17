@@ -32,14 +32,20 @@ import java.util.*;
     {
         int res = 0;
 
+        if ((int) v1 > (int) v2) return 1;
+
+        if ((int) v1 == (int) v2) return 0;
+
+        if ((int) v1 < (int) v2) return -1;
+
         // -1 если v1 < v2
         // 0 если v1 == v2
         // +1 если v1 > v2
-      return res;
     }
 
     public void add(T value)
     {
+
         // автоматическая вставка value 
         // в нужную позицию
     }
