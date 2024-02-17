@@ -53,9 +53,10 @@ import java.util.*;
         Node<T> nd = this.head;
 
         for (int i = 0; i < this.len; i++) {
-            if (nd.compare())
+            if (this.compare(nd.value, val) == 0) return nd;
+            nd = nd.next;
         }
-        return null; // здесь будет ваш код
+        return null;
     }
 
     public void delete(T val)
