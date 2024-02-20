@@ -15,7 +15,13 @@ public class HashTable
     public int hashFun(String value)
     {    
          // всегда возвращает корректный индекс слота
-         return 0;
+        char[] carr = new char[value.length()];
+        int sum = 0;
+        for (int i = 0; i < value.length(); i++){
+            carr[i] = value.charAt(i);
+            sum += carr[i] - '0';
+        }
+        return (sum % size);
     }
 
     public int seekSlot(String value)

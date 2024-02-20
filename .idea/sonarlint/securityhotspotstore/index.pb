@@ -57,3 +57,7 @@ L
 OrderedList/OrderedList.java,9\8\9859a133561a3ce8e137f92d085d5394f47d2691
 P
  OrderedList/OrderedListTest.java,e\2\e2f972a9836c0789e483058dd79edf8582c95976
+H
+HashTable/Hashtable.java,0\c\0c614b92eb4772a88c947c7c45a5af0ce1e1f700
+L
+HashTable/HashTableTest.java,b\0\b0a0672a3a436eca6b41f6e25bf1b7e4c0f220bf
