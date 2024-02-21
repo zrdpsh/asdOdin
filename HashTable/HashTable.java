@@ -26,9 +26,46 @@ public class HashTable
 
     public int seekSlot(String value)
     {
-         // находит индекс пустого слота для значения, или -1
-         return -1;
+        int i;
+        i = hashFun(value);
+        i = checkIndex(i, value);
+        return i;
     }
+
+      public int checkIndex(int i, String key) {
+          // check slot by step
+          i = checkWithStep(i, key);
+          // check each slot
+          if(i >= size){
+              i = checkEachElement(i, key);
+          }
+          /**
+           * if have't free slot or already have this key
+           */
+          if(i >= size)
+              return -1;
+          return i;
+      }
+
+      public int checkWithStep(int i, String key) {
+          while(i < size && slots[i] != null){
+              if(slots[i].equals(key))
+                  break;
+              i += step;
+          }
+          return i;
+
+      }
+
+      public int checkEachElement(int i, String key) {
+          i = 0;
+          while(i < size && slots[i] != null){
+              if(slots[i].equals(key))
+                  break;
+              i++;
+          }
+          return i;
+      }
 
      public int put(String value)
      {
@@ -36,12 +73,28 @@ public class HashTable
          
          // возвращается индекс слота или -1
          // если из-за коллизий элемент не удаётся разместить 
-         return -1;
+//         return -1;
+
+         int i;
+         i = seekSlot(value);
+         if(i != -1){
+             slots[i] = value;
+         }
+         return i;
      }
 
      public int find(String value)
      {
          // находит индекс слота со значением, или -1
+//         return -1;
+         int i = hashFun(value);
+         if(value.equals(slots[i]))
+             return i;
+
+         for (i = 0; i < size; i++)
+             if(value.equals(slots[i]))
+                 return i;
          return -1;
-     }
+
+         }
   }
