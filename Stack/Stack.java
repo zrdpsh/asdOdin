@@ -1,12 +1,6 @@
 package Stack;
 
-import java.util.*;
-import java.util.concurrent.Callable;
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
-import java.util.function.IntBinaryOperator;
-
-import static java.util.Map.entry;
+import java.util.LinkedList;
 
 public class Stack<T>
 {

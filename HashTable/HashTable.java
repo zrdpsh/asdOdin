@@ -1,3 +1,5 @@
+package HashTable;
+
 public class HashTable
   {
     public int size;
@@ -15,11 +17,9 @@ public class HashTable
     public int hashFun(String value)
     {    
          // всегда возвращает корректный индекс слота
-        char[] carr = new char[value.length()];
         int sum = 0;
         for (int i = 0; i < value.length(); i++){
-            carr[i] = value.charAt(i);
-            sum += carr[i] - '0';
+            sum += value.charAt(i);
         }
         return (sum % size);
     }
@@ -83,8 +83,6 @@ public class HashTable
 
      public int find(String value)
      {
-         // находит индекс слота со значением, или -1
-//         return -1;
          int i = hashFun(value);
          if(value.equals(slots[i]))
              return i;
