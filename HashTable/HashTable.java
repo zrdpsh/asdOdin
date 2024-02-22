@@ -35,11 +35,7 @@ public class HashTable
       public int checkIndex(int i, String key) {
         int res = -1;
           for(;i < size*step; i+=step){
-              if(slots[i%size] == null) {
-                  res = i%size;
-                  break;
-              }
-              if(slots[i%size].equals(key)) {
+              if(slots[i%size] == null || slots[i%size].equals(key)) {
                   res = i%size;
                   break;
               }
