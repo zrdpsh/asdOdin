@@ -1,0 +1,9 @@
+//        for (int j = step; j < size; j++) {
+//              for (int k = i; k < size*j; k+=j) {
+//                  if (slots[size%k].equals(key)) {
+//                      return k;
+//                      break;
+//                  }
+//              }
+//          }
+//          return -1;

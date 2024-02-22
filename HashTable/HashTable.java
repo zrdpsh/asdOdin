@@ -15,8 +15,7 @@ public class HashTable
     }
 
     public int hashFun(String value)
-    {    
-         // всегда возвращает корректный индекс слота
+    {
         int sum = 0;
         for (int i = 0; i < value.length(); i++){
             sum += value.charAt(i);
@@ -24,12 +23,14 @@ public class HashTable
         return (sum % size);
     }
 
+
     public int seekSlot(String value)
     {
         int i;
         i = hashFun(value);
         i = checkIndex(i, value);
         return i;
+
     }
 
       public int checkIndex(int i, String key) {
@@ -37,7 +38,7 @@ public class HashTable
           i = checkWithStep(i, key);
           // check each slot
           if(i >= size){
-              i = checkEachElement(i, key);
+              i = linearCheck(i, key);
           }
 
           if(i >= size)
@@ -52,15 +53,12 @@ public class HashTable
               i += step;
           }
           return i;
-
       }
 
-      public int checkEachElement(int i, String key) {
-          i = 0;
-          while(i < size && slots[i] != null){
-              if(slots[i].equals(key))
-                  break;
-              i++;
+      public int linearCheck(int i, String key) {
+
+          for (int i = 0; (i < size && slots[i] != null); i++) {
+              if (slots[i].equals(key)) break;
           }
           return i;
       }
