@@ -30,46 +30,28 @@ public class HashTable
         i = hashFun(value);
         i = checkIndex(i, value);
         return i;
-
     }
 
       public int checkIndex(int i, String key) {
-          // check slot by step
-          i = checkWithStep(i, key);
-          // check each slot
-          if(i >= size){
-              i = linearCheck(i, key);
-          }
-
-          if(i >= size)
-              return -1;
-          return i;
-      }
-
-      public int checkWithStep(int i, String key) {
-          while(i < size && slots[i] != null){
-              if(slots[i].equals(key))
+        int res = -1;
+          for(;i < size*step; i+=step){
+              if(slots[i%size] == null) {
+                  res = i%size;
                   break;
-              i += step;
+              }
+              if(slots[i%size].equals(key)) {
+                  res = i%size;
+                  break;
+              }
           }
-          return i;
-      }
-
-      public int linearCheck(int i, String key) {
-
-          for (int i = 0; (i < size && slots[i] != null); i++) {
-              if (slots[i].equals(key)) break;
-          }
-          return i;
+          return res;
       }
 
      public int put(String value)
      {
          int i;
          i = seekSlot(value);
-         if(i != -1){
-             slots[i] = value;
-         }
+         if(i != -1) slots[i] = value;
          return i;
      }
 
@@ -83,6 +65,5 @@ public class HashTable
              if(value.equals(slots[i]))
                  return i;
          return -1;
-
-         }
+     }
   }
