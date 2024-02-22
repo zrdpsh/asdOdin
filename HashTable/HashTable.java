@@ -33,14 +33,25 @@ public class HashTable
     }
 
       public int checkIndex(int i, String key) {
-        int res = -1;
-          for(;i < size*step; i+=step){
-              if(slots[i%size] == null || slots[i%size].equals(key)) {
-                  res = i%size;
-                  break;
-              }
+        i = checkViaStep(i, key);
+        if (i >= size) i = checkEach(key);
+        if (i >= size) i = -1;
+        return i;
+      }
+
+      public int checkViaStep(int i, String key) {
+          for(;i < size && slots[i] != null; i+=step){
+              if(slots[i%size].equals(key)) break;
           }
-          return res;
+          return i;
+      }
+
+      public int checkEach(String key) {
+          int i = 0;
+          for(; i < size && slots[i] != null; i++){
+              if(slots[i%size].equals(key)) break;
+          }
+          return i;
       }
 
      public int put(String value)

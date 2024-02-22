@@ -164,11 +164,11 @@ class HashTableTest {
         ht.put("d");
         ht.put("i");
 
-        int res = ht.find("u");
-        int res2 = ht.find("d");
+        int res = ht.find("d");
+        int res2 = ht.find("i");
 
-        Assertions.assertTrue(res == -1);
-        Assertions.assertTrue(res2 == 15);
+        Assertions.assertTrue(res == 0);
+        Assertions.assertTrue(res2 == 1);
     }
 
 
