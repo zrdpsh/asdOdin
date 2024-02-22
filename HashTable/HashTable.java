@@ -65,12 +65,6 @@ public class HashTable
 
      public int put(String value)
      {
-         // записываем значение по хэш-функции
-         
-         // возвращается индекс слота или -1
-         // если из-за коллизий элемент не удаётся разместить 
-//         return -1;
-
          int i;
          i = seekSlot(value);
          if(i != -1){
