@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class HashTableTest {
 
     @Test
-    void hashFunZero() {
+    void hashFunZeroPos() {
         HashTable ht = new HashTable(97, 2);
 
         ht.put("a");
@@ -41,13 +41,29 @@ class HashTableTest {
     }
 
     @Test
+    void hashFunFullLongTable() {
+        HashTable ht = new HashTable(97, 2);
+
+        String tstStr = "a";
+
+        for (int i = 0; i < 97; i++) {
+            ht.put(tstStr);
+            tstStr += (char) (i%2+'a');
+        }
+
+        int res = ht.find("a");
+        int res2 = ht.put("c");
+
+        Assertions.assertTrue(res == 0);
+        Assertions.assertTrue(res2 == -1);
+    }
+
+    @Test
     void seekSlotEmpty() {
         HashTable ht = new HashTable(10, 2);
+        int res2 = ht.find("b");
 
-        ht.put("a");
-        int res = ht.find("a");
-
-        Assertions.assertTrue(res == 7);
+        Assertions.assertTrue(res2 == -1);
     }
 
     @Test
@@ -80,7 +96,7 @@ class HashTableTest {
     }
 
     @Test
-    void seekSlotFullTable() {
+    void putSlotFullTable() {
         HashTable ht = new HashTable(10, 2);
 
         ht.put("d");
@@ -101,7 +117,7 @@ class HashTableTest {
     }
 
     @Test
-    void seekFullPrimeSize() {
+    void putFullPrimeSize() {
         HashTable ht = new HashTable(17, 3);
 
         ht.put("d");
@@ -123,38 +139,28 @@ class HashTableTest {
         ht.put("r");
         ht.put("s");
         ht.put("t");
-        ht.put("u");
 
-        int res = ht.find("u");
+        int res = ht.find("f");
         int res2 = ht.find("d");
 
-        Assertions.assertTrue(res == -1);
+        int charPos = "f".charAt(0)%17;
+
+        Assertions.assertTrue(res == charPos);
         Assertions.assertTrue(res2 == 15);
     }
 
-    @Test
-    void hashFunFullLongTable() {
-        HashTable ht = new HashTable(97, 2);
 
-        String tstStr = "a";
-
-        for (int i = 0; i < 97; i++) {
-            ht.put(tstStr);
-            tstStr += (char) (i%2+'a');
-        }
-
-        int res = ht.find("a");
-        int res2 = ht.put("c");
-
-        Assertions.assertTrue(res == 0);
-        Assertions.assertTrue(res2 == -1);
-    }
 
     @Test
-    void putCollision() {
-        HashTable ht = new HashTable(97, 2);
+    void putSameString() {
+        HashTable ht = new HashTable(5, 5);
 
-        String tstStr = "a";
+        ht.put("d");
+
+        int res = ht.put("d");
+        int res2 = ht.find("d");
+
+        Assertions.assertTrue(res == res2);
     }
 
     @Test
