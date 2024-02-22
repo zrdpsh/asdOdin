@@ -39,9 +39,7 @@ public class HashTable
           if(i >= size){
               i = checkEachElement(i, key);
           }
-          /**
-           * if have't free slot or already have this key
-           */
+
           if(i >= size)
               return -1;
           return i;

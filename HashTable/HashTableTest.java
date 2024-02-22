@@ -7,7 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class HashTableTest {
 
     @Test
-    void hashFun() {
+    void hashFunOne() {
+
     }
 
     @Test
