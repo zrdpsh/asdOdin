@@ -157,6 +157,20 @@ class HashTableTest {
         String tstStr = "a";
     }
 
+    @Test
+    void putStepEqualsSize() {
+        HashTable ht = new HashTable(5, 5);
+
+        ht.put("d");
+        ht.put("i");
+
+        int res = ht.find("u");
+        int res2 = ht.find("d");
+
+        Assertions.assertTrue(res == -1);
+        Assertions.assertTrue(res2 == 15);
+    }
+
 
     @Test
     void findAbsentValue() {
