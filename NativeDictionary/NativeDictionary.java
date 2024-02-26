@@ -13,6 +13,7 @@ class NativeDictionary<T>
       size = sz;
       slots = new String[size];
       values = (T[]) Array.newInstance(clazz, this.size);
+      for (int i = 0; i < size; i++) slots[i] = null;
     }
 
     public int hashFun(String key)
