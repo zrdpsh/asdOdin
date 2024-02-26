@@ -58,8 +58,13 @@ class NativeDictionary<T>
 
     public boolean isKey(String key)
     {
-      // возвращает true если ключ имеется,
-      // иначе false
+        int slot = hashFun(key);
+        if (slots[slot] != null && slots[slot].equals(key)) return true;
+
+        for (slot = 0; slot < slots.length; slot++) {
+            if (slots[slot] != null && slots[slot].equals(key)) return true;
+        }
+
       return false;
     }
 
