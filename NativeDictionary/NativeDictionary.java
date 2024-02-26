@@ -76,8 +76,21 @@ class NativeDictionary<T>
 
     public T get(String key)
     {
-      // возвращает value для key, 
-      // или null если ключ не найден
-      return null;
+        int slot = find(key);
+        if (slot != -1) return values[slot];
+
+        return null;
+    }
+
+    public int find(String value)
+    {
+        int i = hashFun(value);
+        if(value.equals(slots[i])) return i;
+
+        for (i = 0; i < size; i++)
+            if(value.equals(slots[i]))
+                return i;
+
+        return -1;
     }
 }
