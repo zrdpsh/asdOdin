@@ -65,3 +65,7 @@ H
 HashTable/HashTable.java,8\2\821ef676d001e33bedbd4dc9ae0f7c1b23ad4250
 ;
 Misc/hg.txt,8\f\8fc2cdd35f0f81740aad5117f4ba6292a029986b
+Z
+*NativeDictionary/NativeDictionaryTest.java,8\e\8eefd96003efb874efb4d0614296955a9e835781
+V
+&NativeDictionary/NativeDictionary.java,4\0\40c4f961642b3c10acec152de094bd3d7ed071bb
