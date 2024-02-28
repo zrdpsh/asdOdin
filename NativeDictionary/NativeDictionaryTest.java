@@ -40,9 +40,9 @@ class NativeDictionaryTest {
 
         nd.put("a", "17");
 
-        int res = nd.find("a");
+        Boolean res = nd.isKey("a");
 
-        Assertions.assertTrue(res == 7);
+        Assertions.assertTrue(res);
     }
 
     @Test
@@ -51,9 +51,9 @@ class NativeDictionaryTest {
 
         nd.put("a", "17");
 
-        int res = nd.find("b");
+        Boolean res = nd.isKey("b");
 
-        Assertions.assertTrue(res == -1);
+        Assertions.assertFalse(res);
     }
 
     @Test
