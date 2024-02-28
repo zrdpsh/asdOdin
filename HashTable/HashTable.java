@@ -1,3 +1,5 @@
+package HashTable;
+
 public class HashTable
   {
     public int size;
