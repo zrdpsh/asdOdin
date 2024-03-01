@@ -4,6 +4,7 @@ public class PowerSet
    public PowerSet()
    {
      // ваша реализация хранилища
+      //
    }
 
    public int size()
