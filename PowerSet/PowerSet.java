@@ -10,6 +10,7 @@ public class PowerSet
    public int size()
    {
         // количество элементов в множестве
+      
         return 0;
    }
 
@@ -58,4 +59,8 @@ public class PowerSet
         // иначе false
         return false;
     }
+
+   public boolean a(int m) {
+      return true;
+   }
 }
