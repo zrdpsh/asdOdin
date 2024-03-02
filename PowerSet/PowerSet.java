@@ -36,6 +36,10 @@ public class PowerSet
         return (sum % ss);
     }
 
+    public String[] getContents() {
+       return slots;
+    }
+
 
    public void put(String value)
    {
