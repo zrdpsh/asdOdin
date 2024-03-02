@@ -69,19 +69,21 @@ public class PowerSet
     public PowerSet union(PowerSet set2)
     {
         PowerSet res = new PowerSet();
+        String[] s2str = set2.getContents();
         // объединение текущего множества и set2
-        for (int i = 0; i < size; i++) set2.put(slots[i]);
+        for (int i = 0; i < size; i++) res.put(slots[i]);
+        for (int i = 0; i < s2str.length; i++) res.put(s2str[i]);
 
-        return set2;
+        return res;
     }
 
     public PowerSet difference(PowerSet set2)
     {
         PowerSet res = new PowerSet();
+        String[] tmp = set2.getContents();
         // разница текущего множества и set2
 
         for (int i = 0; i < size; i++) {
-            String tmp =
             if (!set2.get(slots[i])) res.put();
         }
         return null;
