@@ -22,10 +22,13 @@ public class PowerSet
 
    public int size()
    {
-        // количество элементов в множестве
-      
         return size;
    }
+
+    public String[] getContents() {
+        return slots;
+    }
+
 
     public int hashFun(String value)
     {
@@ -33,17 +36,46 @@ public class PowerSet
         for (int i = 0; i < value.length(); i++){
             sum += value.charAt(i);
         }
-        return (sum % ss);
+      return (sum % ss);
     }
 
-    public String[] getContents() {
-       return slots;
+    public int seekSlot(String value)
+    {
+        int i;
+        i = hashFun(value);
+        i = checkIndex(i, value);
+        return i;
+    }
+
+    public int checkIndex(int i, String key) {
+        i = checkViaStep(i, key);
+        if (i >= size) i = checkEach(key);
+        if (i >= size) i = -1;
+        return i;
+    }
+
+    public int checkViaStep(int i, String key) {
+        for(;i < size && slots[i] != null; i+=step){
+            if(slots[i%size].equals(key)) break;
+        }
+        return i;
+    }
+
+    public int checkEach(String key) {
+        int i = 0;
+        for(; i < size && slots[i] != null; i++){
+            if(slots[i%size].equals(key)) break;
+        }
+        return i;
     }
 
 
    public void put(String value)
    {
      // всегда срабатывает
+       int i;
+       i = seekSlot(value);
+       if(i != -1) slots[i] = value;
    }
 
     public boolean get(String value)
