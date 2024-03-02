@@ -22,7 +22,7 @@ public class PowerSet
    {
         // количество элементов в множестве
       
-        return 0;
+        return h;
    }
 
 
