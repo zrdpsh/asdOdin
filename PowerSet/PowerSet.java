@@ -91,8 +91,17 @@ public class PowerSet
 
     public boolean remove(String value)
     {
-        // возвращает true если value удалено
-        // иначе false
+        int i = hashFun(value);
+        if(value.equals(slots[i])) {
+            slots[i] = null;
+            return true;
+        }
+
+        for (i = 0; i < size; i++)
+            if(value.equals(slots[i])) {
+                slots[i] = null;
+                return true;
+            }
         return false;
     }
 
