@@ -32,7 +32,38 @@ class PowerSetTest {
     }
 
     @Test
-    void difference() {
+    void differenceDefault() {
+        PowerSet ps1 = new PowerSet();
+        PowerSet ps2 = new PowerSet();
+        PowerSet ps3 = new PowerSet();
+
+        for (int i = 0; i < 10; i++) {
+            if (i%2 == 0) ps1.put(String.valueOf(i));
+            if (i%3 == 0) ps2.put(String.valueOf(i));
+            if (i%2 == 0 ^ i%3 == 0) ps3.put(String.valueOf(i));
+        }
+
+        PowerSet res = ps1.difference(ps2);
+        String[] resString = res.getContents();
+        String[] testString = ps3.getContents();
+
+        Assertions.assertTrue(res.size() == 9);
+        Assertions.assertTrue(res.equals(testString);
+    }
+
+    @Test
+    void differenceEmptyDifference() {
+        PowerSet ps1 = new PowerSet();
+        PowerSet ps2 = new PowerSet();
+
+        for (int i = 0; i < 10; i++) {
+            ps1.put(String.valueOf(i));
+            ps2.put(String.valueOf(i));
+        }
+
+        PowerSet res = ps1.difference(ps2);
+
+        Assertions.assertTrue(res.size() == 0);
     }
 
     @Test
