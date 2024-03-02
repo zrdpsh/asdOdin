@@ -1,7 +1,9 @@
+package PowerSet;
+
 public class PowerSet
 {
     public int ss;
-    private int h;
+    private int size;
 
     private String[] slots;
     private int step = 3;
@@ -11,18 +13,18 @@ public class PowerSet
    {
      // ваша реализация хранилища
       //
-       ss = 1000;
+       ss = 20000;
        slots = new String[ss];
-       h = 0;
+       size = 0;
        for (int i = 0; i < ss; i++) slots[i] = null;
 
    }
 
-   public int size()á
+   public int size()
    {
         // количество элементов в множестве
       
-        return h;
+        return size;
    }
 
     public int hashFun(String value)
@@ -62,13 +64,22 @@ public class PowerSet
 
     public PowerSet union(PowerSet set2)
     {
+        PowerSet res = new PowerSet();
         // объединение текущего множества и set2
-        return null;
+        for (int i = 0; i < size; i++) set2.put(slots[i]);
+
+        return set2;
     }
 
     public PowerSet difference(PowerSet set2)
     {
+        PowerSet res = new PowerSet();
         // разница текущего множества и set2
+
+        for (int i = 0; i < size; i++) {
+            String tmp =
+            if (!set2.get(slots[i])) res.put();
+        }
         return null;
     }
 
@@ -77,7 +88,10 @@ public class PowerSet
         // возвращает true, если set2 есть
         // подмножество текущего множества,
         // иначе false
-        return false;
+        for (int i = 0; i < size; i++) {
+            if (!set2.get(slots[i])) return false;
+        }
+        return true;
     }
 
    public boolean a(int m) {
