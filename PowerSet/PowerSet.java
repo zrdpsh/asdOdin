@@ -80,8 +80,12 @@ public class PowerSet
 
     public boolean get(String value)
     {
-        // возвращает true если value имеется в множестве,
-        // иначе false
+        int i = hashFun(value);
+        if(value.equals(slots[i])) return true;
+
+        for (i = 0; i < size; i++)
+            if(value.equals(slots[i])) return true;
+
         return false;
     }
 
