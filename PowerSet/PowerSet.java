@@ -62,15 +62,21 @@ public class PowerSet
 
     public PowerSet intersection(PowerSet set2)
     {
-        // пересечение текущего множества и set2
-        return null;
+        PowerSet res = new PowerSet();
+        String[] s2str = set2.getContents();
+
+        for (int i = 0; i < size; i++) {
+            if (set2.get(slots[i])) res.put(slots[i]);
+        }
+
+        return res;
     }
 
     public PowerSet union(PowerSet set2)
     {
         PowerSet res = new PowerSet();
         String[] s2str = set2.getContents();
-        // объединение текущего множества и set2
+
         for (int i = 0; i < size; i++) res.put(slots[i]);
         for (int i = 0; i < s2str.length; i++) res.put(s2str[i]);
 
@@ -79,14 +85,15 @@ public class PowerSet
 
     public PowerSet difference(PowerSet set2)
     {
-        PowerSet res = new PowerSet();
-        String[] tmp = set2.getContents();
-        // разница текущего множества и set2
+        PowerSet u = this.union(set2);
+        PowerSet s = this.intersection(set2);
+        String[] sStr = s.getContents();
 
-        for (int i = 0; i < size; i++) {
-            if (!set2.get(slots[i])) res.put();
+        for (int i = 0; i < sStr.length; i++) {
+            if (u.get(sStr[i])) u.remove(sStr[i]);
         }
-        return null;
+
+        return u;
     }
 
     public boolean isSubset(PowerSet set2)
