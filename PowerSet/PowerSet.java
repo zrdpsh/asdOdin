@@ -25,6 +25,15 @@ public class PowerSet
         return h;
    }
 
+    public int hashFun(String value)
+    {
+        int sum = 0;
+        for (int i = 0; i < value.length(); i++){
+            sum += value.charAt(i);
+        }
+        return (sum % ss);
+    }
+
 
    public void put(String value)
    {
