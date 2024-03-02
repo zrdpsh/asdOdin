@@ -1,13 +1,24 @@
 public class PowerSet
 {
+    public int ss;
+    private int h;
+
+    private String[] slots;
+    private int step = 3;
+
 
    public PowerSet()
    {
      // ваша реализация хранилища
       //
+       ss = 1000;
+       slots = new String[ss];
+       h = 0;
+       for (int i = 0; i < ss; i++) slots[i] = null;
+
    }
 
-   public int size()
+   public int size()á
    {
         // количество элементов в множестве
       
