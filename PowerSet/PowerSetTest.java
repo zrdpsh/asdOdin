@@ -8,27 +8,99 @@ import static org.junit.jupiter.api.Assertions.*;
 class PowerSetTest {
 
     @Test
-    void size() {
+    void sizeDefault() {
+        PowerSet ps1 = new PowerSet();
+
+        for (int i = 0; i < 10; i++) {
+            ps1.put(String.valueOf(i));
+        }
+
+
+        Assertions.assertTrue(ps1.size() == 10);
     }
 
     @Test
-    void put() {
+    void putDefault() {
+        PowerSet ps1 = new PowerSet();
+
+        for (int i = 0; i < 2; i++) {
+            ps1.put(String.valueOf(i));
+        }
+
+        String[] resString = ps1.getContents();
+        String[] testString = {"1", "2", "3"};
+
+
+        Assertions.assertTrue(ps1.size() == 3);
+        Assertions.assertTrue(testString.equals(resString));
     }
 
     @Test
-    void get() {
+    void geDefault() {
+        PowerSet ps1 = new PowerSet();
+
+        for (int i = 0; i < 2; i++) {
+            ps1.put(String.valueOf(i));
+        }
+
+        boolean res = ps1.get("0");
+
+
+        Assertions.assertTrue(ps1.size() == 3);
+        Assertions.assertTrue(res);
     }
 
     @Test
-    void remove() {
+    void removeDefault() {
+        PowerSet ps1 = new PowerSet();
+
+        for (int i = 0; i < 2; i++) {
+            ps1.put(String.valueOf(i));
+        }
+
+        Assertions.assertTrue(ps1.remove("0"));
+        Assertions.assertFalse(ps1.get("0"));
+        Assertions.assertTrue(ps1.size() == 2);
     }
 
     @Test
-    void intersection() {
+    void intersectionDefault() {
+        PowerSet ps1 = new PowerSet();
+        PowerSet ps2 = new PowerSet();
+
+        for (int i = 0; i < 10; i++) {
+            ps1.put(String.valueOf(i));
+            ps2.put(String.valueOf(i));
+        }
+
+        PowerSet res = ps1.intersection(ps2);
+
+        String[] testString = ps1.getContents();
+        String[] testString2 = ps2.getContents();
+
+        Assertions.assertTrue(res.size() == 10);
+        Assertions.assertTrue(testString.equals(testString2));
     }
 
     @Test
-    void union() {
+    void unionDefault() {
+        PowerSet ps1 = new PowerSet();
+        PowerSet ps2 = new PowerSet();
+        PowerSet ps3 = new PowerSet();
+
+        for (int i = 0; i < 10; i++) {
+            if (i%2 == 0) ps1.put(String.valueOf(i));
+            if (!(i%2 == 0)) ps2.put(String.valueOf(i));
+            ps3.put(String.valueOf(i));
+        }
+
+        PowerSet res = ps1.union(ps2);
+        String[] resString = res.getContents();
+
+        String[] testString = ps3.getContents();
+
+        Assertions.assertTrue(res.size() == 10);
+        Assertions.assertTrue(resString.equals(testString));
     }
 
     @Test
@@ -45,10 +117,11 @@ class PowerSetTest {
 
         PowerSet res = ps1.difference(ps2);
         String[] resString = res.getContents();
+
         String[] testString = ps3.getContents();
 
         Assertions.assertTrue(res.size() == 9);
-        Assertions.assertTrue(res.equals(testString);
+        Assertions.assertTrue(resString.equals(testString));
     }
 
     @Test
