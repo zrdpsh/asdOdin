@@ -1,5 +1,3 @@
-package PowerSet;
-
 public class PowerSet
 {
     public int ss;
@@ -168,3 +166,10 @@ public class PowerSet
     }
 
 }
+
+
+
+
+
+
+
