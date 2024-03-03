@@ -26,7 +26,16 @@ public class PowerSet
    }
 
     public String[] getContents() {
-        return slots;
+        String[] res = new String[size];
+        int j = 0;
+
+        for (int i = 0; i < ss; i++) {
+            if (slots[i] != null) {
+                res[j] = slots[i];
+                j++;
+            }
+        }
+        return res;
     }
 
 
@@ -49,22 +58,22 @@ public class PowerSet
 
     public int checkIndex(int i, String key) {
         i = checkViaStep(i, key);
-        if (i >= size) i = checkEach(key);
-        if (i >= size) i = -1;
+        if (i >= ss) i = checkEach(key);
+        if (i >= ss) i = -1;
         return i;
     }
 
     public int checkViaStep(int i, String key) {
-        for(;i < size && slots[i] != null; i+=step){
-            if(slots[i%size].equals(key)) break;
+        for(;i < ss && slots[i] != null; i+=step){
+            if(slots[i%ss].equals(key)) break;
         }
         return i;
     }
 
     public int checkEach(String key) {
         int i = 0;
-        for(; i < size && slots[i] != null; i++){
-            if(slots[i%size].equals(key)) break;
+        for(; i < ss && slots[i] != null; i++){
+            if(slots[i%ss].equals(key)) break;
         }
         return i;
     }
@@ -86,7 +95,7 @@ public class PowerSet
         int i = hashFun(value);
         if(value.equals(slots[i])) return true;
 
-        for (i = 0; i < size; i++)
+        for (i = 0; i < ss; i++)
             if(value.equals(slots[i])) return true;
 
         return false;
@@ -97,10 +106,11 @@ public class PowerSet
         int i = hashFun(value);
         if(value.equals(slots[i])) {
             slots[i] = null;
+            size--;
             return true;
         }
 
-        for (i = 0; i < size; i++)
+        for (i = 0; i < ss; i++)
             if(value.equals(slots[i])) {
                 slots[i] = null;
                 size--;
@@ -112,10 +122,10 @@ public class PowerSet
     public PowerSet intersection(PowerSet set2)
     {
         PowerSet res = new PowerSet();
-        String[] s2str = set2.getContents();
+        String[] sStr = this.getContents();
 
         for (int i = 0; i < size; i++) {
-            if (set2.get(slots[i])) res.put(slots[i]);
+            if (set2.get(sStr[i])) res.put(sStr[i]);
         }
 
         return res;
@@ -124,9 +134,10 @@ public class PowerSet
     public PowerSet union(PowerSet set2)
     {
         PowerSet res = new PowerSet();
+        String[] s1str = this.getContents();
         String[] s2str = set2.getContents();
 
-        for (int i = 0; i < size; i++) res.put(slots[i]);
+        for (int i = 0; i < size; i++) res.put(s1str[i]);
         for (int i = 0; i < s2str.length; i++) res.put(s2str[i]);
 
         return res;
@@ -156,7 +167,4 @@ public class PowerSet
         return true;
     }
 
-   public boolean a(int m) {
-      return false;
-   }
 }
