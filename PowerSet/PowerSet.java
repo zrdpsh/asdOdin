@@ -1,3 +1,5 @@
+package PowerSet;
+
 public class PowerSet
 {
     public int ss;
@@ -142,15 +144,14 @@ public class PowerSet
 
     public PowerSet difference(PowerSet set2)
     {
-        PowerSet u = this.union(set2);
-        PowerSet s = this.intersection(set2);
-        String[] intersecStr = s.getContents();
+        PowerSet res = new PowerSet();
+        String[] sStr = this.getContents();
 
-        for (int i = 0; i < intersecStr.length; i++) {
-            if (u.get(intersecStr[i])) u.remove(intersecStr[i]);
+        for (int i = 0; i < sStr.length; i++) {
+            if (!(set2.get(sStr[i]))) res.put(sStr[i]);
         }
 
-        return u;
+        return res;
     }
 
     public boolean isSubset(PowerSet set2)
