@@ -75,7 +75,10 @@ public class PowerSet
      // всегда срабатывает
        int i;
        i = seekSlot(value);
-       if(i != -1) slots[i] = value;
+       if(i != -1) {
+           slots[i] = value;
+           size++;
+       }
    }
 
     public boolean get(String value)
@@ -100,6 +103,7 @@ public class PowerSet
         for (i = 0; i < size; i++)
             if(value.equals(slots[i])) {
                 slots[i] = null;
+                size--;
                 return true;
             }
         return false;
