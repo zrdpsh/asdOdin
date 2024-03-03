@@ -11,8 +11,6 @@ public class PowerSet
 
    public PowerSet()
    {
-     // ваша реализация хранилища
-      //
        ss = 20000;
        slots = new String[ss];
        size = 0;
@@ -68,6 +66,8 @@ public class PowerSet
             if(slots[i%ss].equals(key)) break;
         }
         return i;
+
+//        if (slots[i] != null) return i;
     }
 
     public int checkEach(String key) {
@@ -81,7 +81,8 @@ public class PowerSet
 
    public void put(String value)
    {
-     // всегда срабатывает
+       if (this.get(value)) return;
+
        int i;
        i = seekSlot(value);
        if(i != -1) {
@@ -147,10 +148,10 @@ public class PowerSet
     {
         PowerSet u = this.union(set2);
         PowerSet s = this.intersection(set2);
-        String[] sStr = s.getContents();
+        String[] intersecStr = s.getContents();
 
-        for (int i = 0; i < sStr.length; i++) {
-            if (u.get(sStr[i])) u.remove(sStr[i]);
+        for (int i = 0; i < intersecStr.length; i++) {
+            if (u.get(intersecStr[i])) u.remove(intersecStr[i]);
         }
 
         return u;
@@ -158,11 +159,10 @@ public class PowerSet
 
     public boolean isSubset(PowerSet set2)
     {
-        // возвращает true, если set2 есть
-        // подмножество текущего множества,
-        // иначе false
-        for (int i = 0; i < size; i++) {
-            if (!set2.get(slots[i])) return false;
+        String[] s2 = set2.getContents();
+
+        for (int i = 0; i < set2.size(); i++) {
+            if (!this.get(s2[i])) return false;
         }
         return true;
     }

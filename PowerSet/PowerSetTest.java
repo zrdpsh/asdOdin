@@ -86,6 +86,26 @@ class PowerSetTest {
     }
 
     @Test
+    void intersectionEmpty() {
+        PowerSet ps1 = new PowerSet();
+        PowerSet ps2 = new PowerSet();
+
+        for (int i = 0; i < 10; i++) {
+            if (i%2 == 0) ps1.put(String.valueOf(i));
+            if (!(i%2 == 0)) ps2.put(String.valueOf(i));
+        }
+
+        PowerSet res = ps1.intersection(ps2);
+
+        String[] testString = res.getContents();
+        String[] testString2 = new String[0];
+
+        Assertions.assertTrue(res.size() == 0);
+//        Assertions.assertTrue(testString.equals(testString2));
+        Assertions.assertIterableEquals(Arrays.asList(testString), Arrays.asList(testString2));
+    }
+
+    @Test
     void unionDefault() {
         PowerSet ps1 = new PowerSet();
         PowerSet ps2 = new PowerSet();
@@ -94,6 +114,26 @@ class PowerSetTest {
         for (int i = 0; i < 10; i++) {
             if (i%2 == 0) ps1.put(String.valueOf(i));
             if (!(i%2 == 0)) ps2.put(String.valueOf(i));
+            ps3.put(String.valueOf(i));
+        }
+
+        PowerSet res = ps1.union(ps2);
+        String[] resString = res.getContents();
+
+        String[] testString = ps3.getContents();
+
+        Assertions.assertTrue(res.size() == 10);
+        Assertions.assertIterableEquals(Arrays.asList(testString), Arrays.asList(resString));
+    }
+
+    @Test
+    void unionWithEmpty() {
+        PowerSet ps1 = new PowerSet();
+        PowerSet ps2 = new PowerSet();
+        PowerSet ps3 = new PowerSet();
+
+        for (int i = 0; i < 10; i++) {
+            ps1.put(String.valueOf(i));
             ps3.put(String.valueOf(i));
         }
 
@@ -123,7 +163,7 @@ class PowerSetTest {
 
         String[] testString = ps3.getContents();
 
-        Assertions.assertTrue(res.size() == 9);
+        Assertions.assertTrue(res.size() == 5);
         Assertions.assertIterableEquals(Arrays.asList(testString), Arrays.asList(resString));
     }
 
@@ -162,6 +202,31 @@ class PowerSetTest {
 
         Assertions.assertTrue(ps1.isSubset(ps2));
     }
+    @Test
+    void isSubsetThisIsGreater() {
+        PowerSet ps1 = new PowerSet();
+        PowerSet ps2 = new PowerSet();
+
+        for (int i = 0; i < 10; i++) {
+            ps1.put(String.valueOf(i));
+            if (i%2==0) ps2.put(String.valueOf(i));
+        }
+
+        Assertions.assertTrue(ps1.isSubset(ps2));
+    }
+    @Test
+    void isSubsetThisIsSmaller() {
+        PowerSet ps1 = new PowerSet();
+        PowerSet ps2 = new PowerSet();
+
+        for (int i = 0; i < 10; i++) {
+            if (i%2==0) ps1.put(String.valueOf(i));
+            ps2.put(String.valueOf(i));
+        }
+
+        Assertions.assertFalse(ps1.isSubset(ps2));
+    }
+
 
 
     @Test
