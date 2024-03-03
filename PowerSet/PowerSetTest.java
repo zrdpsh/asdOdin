@@ -3,6 +3,9 @@ package PowerSet;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PowerSetTest {
@@ -23,23 +26,22 @@ class PowerSetTest {
     void putDefault() {
         PowerSet ps1 = new PowerSet();
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             ps1.put(String.valueOf(i));
         }
 
         String[] resString = ps1.getContents();
-        String[] testString = {"1", "2", "3"};
-
+        String[] testString = {"0", "1", "2"};
 
         Assertions.assertTrue(ps1.size() == 3);
-        Assertions.assertTrue(testString.equals(resString));
+        Assertions.assertIterableEquals(Arrays.asList(testString), Arrays.asList(resString));
     }
 
     @Test
-    void geDefault() {
+    void getDefault() {
         PowerSet ps1 = new PowerSet();
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             ps1.put(String.valueOf(i));
         }
 
@@ -54,7 +56,7 @@ class PowerSetTest {
     void removeDefault() {
         PowerSet ps1 = new PowerSet();
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             ps1.put(String.valueOf(i));
         }
 
@@ -79,7 +81,8 @@ class PowerSetTest {
         String[] testString2 = ps2.getContents();
 
         Assertions.assertTrue(res.size() == 10);
-        Assertions.assertTrue(testString.equals(testString2));
+//        Assertions.assertTrue(testString.equals(testString2));
+        Assertions.assertIterableEquals(Arrays.asList(testString), Arrays.asList(testString2));
     }
 
     @Test
@@ -100,7 +103,7 @@ class PowerSetTest {
         String[] testString = ps3.getContents();
 
         Assertions.assertTrue(res.size() == 10);
-        Assertions.assertTrue(resString.equals(testString));
+        Assertions.assertIterableEquals(Arrays.asList(testString), Arrays.asList(resString));
     }
 
     @Test
@@ -121,7 +124,7 @@ class PowerSetTest {
         String[] testString = ps3.getContents();
 
         Assertions.assertTrue(res.size() == 9);
-        Assertions.assertTrue(resString.equals(testString));
+        Assertions.assertIterableEquals(Arrays.asList(testString), Arrays.asList(resString));
     }
 
     @Test
