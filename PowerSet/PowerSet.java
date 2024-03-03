@@ -64,8 +64,6 @@ public class PowerSet
             if(slots[i%ss].equals(key)) break;
         }
         return i;
-
-//        if (slots[i] != null) return i;
     }
 
     public int checkEach(String key) {
