@@ -73,8 +73,8 @@ class NativeDictionaryTest {
 
         nd.put("a", "17");
 
-        int res = nd.find("b");
+        String res = (String) nd.get("b");
 
-        Assertions.assertTrue(res == -1);
+        Assertions.assertTrue(res==null);
     }
 }

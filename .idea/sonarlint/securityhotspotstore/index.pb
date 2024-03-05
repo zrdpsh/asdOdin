@@ -69,3 +69,7 @@ Z
 *NativeDictionary/NativeDictionaryTest.java,8\e\8eefd96003efb874efb4d0614296955a9e835781
 V
 &NativeDictionary/NativeDictionary.java,4\0\40c4f961642b3c10acec152de094bd3d7ed071bb
+F
+PowerSet/PowerSet.java,d\c\dc8093ca99496850efacf1b2d4eb5f70620e42c2
+J
+PowerSet/PowerSetTest.java,6\7\67d537cd838886115a71908fb5336a1aa89fc182
