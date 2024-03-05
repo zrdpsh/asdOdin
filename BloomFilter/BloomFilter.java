@@ -27,7 +27,8 @@ public class BloomFilter
       {
         // 223
         // реализация ...
-        return 0;
+          int res = hF(str1, 223);
+          return res;
       }
 
       public void add(String str1)
