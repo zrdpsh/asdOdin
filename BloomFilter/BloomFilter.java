@@ -14,12 +14,14 @@ public class BloomFilter
       public int hash1(String str1)
       {
         // 17
-        for(int i=0; i<str1.length(); i++)
-        {
-            int code = (int)str1.charAt(i);
-        }
+        //for(int i=0; i<str1.length(); i++)
+        //{
+        //    int code = (int)str1.charAt(i);
+        //}
         // реализация ...
-        return 0;
+
+          int res = hF(str1, 17);
+        return res;
       }
       public int hash2(String str1)
       {
@@ -39,10 +41,10 @@ public class BloomFilter
         return false;
       }
 
-      private int hF(String str) {
+      private int hF(String str, int e) {
           int sum = 0;
           for (int i = 0; i < str.length(); i++) {
-              sum = (sum + str.charAt(i)) % filter_len;
+              sum = (sum*e + str.charAt(i)) % filter_len;
           }
 
           return sum;
