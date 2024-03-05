@@ -1,3 +1,5 @@
+package BloomFilter;
+
 public class BloomFilter
 {
       public int filter_len;
@@ -35,5 +37,14 @@ public class BloomFilter
       {
         // проверка, имеется ли строка str1 в фильтре
         return false;
+      }
+
+      private int hF(String str) {
+          int sum = 0;
+          for (int i = 0; i < str.length(); i++) {
+              sum = (sum + str.charAt(i)) % filter_len;
+          }
+
+          return sum;
       }
 }
