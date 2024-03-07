@@ -47,3 +47,11 @@ public class BloomFilter
           return sum | MASK;
       }
 }
+
+
+
+
+
+
+
+
