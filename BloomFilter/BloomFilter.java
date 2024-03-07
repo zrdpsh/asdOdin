@@ -1,5 +1,3 @@
-package BloomFilter;
-
 public class BloomFilter
 {
     private static final int RAND1 = 17;
