@@ -19,7 +19,14 @@ class BloomFilterTest {
     }
 
     @Test
-    void hash2() {
+    void hash2Default() {
+        BloomFilter bf = new BloomFilter(32);
+
+        int res = bf.hash2("0123456789");
+        int res2 = bf.hash2("1234567890");
+
+        Assertions.assertTrue(res == 5);
+        Assertions.assertTrue(res2 == 27);
     }
 
     @Test
