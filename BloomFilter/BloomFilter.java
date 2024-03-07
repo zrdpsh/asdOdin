@@ -37,7 +37,7 @@ public class BloomFilter
           int i1 = hash1(str1);
           int i2 = hash2(str1);
 
-        return false;
+        return ((binaryString & i1) == i1) && ((binaryString & i2) == i2) ;
       }
 
       private int hF(String str, int rand) {
