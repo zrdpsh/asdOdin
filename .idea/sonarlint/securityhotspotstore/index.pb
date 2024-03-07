@@ -73,3 +73,7 @@ F
 PowerSet/PowerSet.java,d\c\dc8093ca99496850efacf1b2d4eb5f70620e42c2
 J
 PowerSet/PowerSetTest.java,6\7\67d537cd838886115a71908fb5336a1aa89fc182
+P
+ BloomFilter/BloomFilterTest.java,5\a\5a65b6ffa9b2a0df267f63f30bb5268741f324bc
+L
+BloomFilter/BloomFilter.java,c\1\c1a8012a0ec0a09909804cfdca336be36f9ccbb2
