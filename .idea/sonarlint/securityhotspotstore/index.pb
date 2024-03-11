@@ -77,3 +77,5 @@ P
  BloomFilter/BloomFilterTest.java,5\a\5a65b6ffa9b2a0df267f63f30bb5268741f324bc
 L
 BloomFilter/BloomFilter.java,c\1\c1a8012a0ec0a09909804cfdca336be36f9ccbb2
+L
+NativeCache/NativeCache.java,6\e\6e8f27e0ee91ee4db7341bf4bffea731ee6bc299
