@@ -8,7 +8,7 @@ class NativeCache<T>
     public int [] hits;
     Class clazz;
 
-    int step = 3;
+    int step = 2;
 
     public NativeCache(int size, Class clazz) {
         this.clazz = clazz;
@@ -80,6 +80,7 @@ class NativeCache<T>
         for (i = 0; i < size; i++)
             if(value.equals(slots[i]))
                 return i;
+
         return -1;
     }
 
