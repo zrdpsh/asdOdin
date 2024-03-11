@@ -66,7 +66,9 @@ class NativeCache<T>
     {
         int i;
         i = seekSlot(value);
-        if(i != -1) slots[i] = value;
+        if(i != -1) {
+            slots[i] = value;
+        }
         return i;
     }
 
@@ -80,6 +82,16 @@ class NativeCache<T>
             if(value.equals(slots[i]))
                 return i;
         return -1;
+    }
+
+    public T get(String str) {
+        int i = find(str);
+        if (i != -1) {
+            hits[i] += 1;
+            return values[i];
+        }
+
+        return null;
     }
 
 
