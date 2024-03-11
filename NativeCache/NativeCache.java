@@ -97,17 +97,15 @@ class NativeCache<T>
     {
         int i;
         i = seekSlot(str);
-        if(i != -1) {
-            slots[i] = str;
-            values[i] = value;
-        }
 
         if (i == -1) {
             int minIx = minValue(this.hits);
-            slots[minIx] = str;
-            values[minIx] = value;
             hits[minIx] = 0;
+            i = minIx;
         }
+
+        slots[i] = str;
+        values[i] = value;
     }
 
     public static int minValue(int[] hits) {
