@@ -94,5 +94,15 @@ class NativeCache<T>
         return null;
     }
 
+    public static int minValue(int[] hits) {
+        int res = 0;
+
+        for (int i = 0; i < hits.length; i++) {
+            if (hits[i] < hits[res]) res = i;
+        }
+
+        return res;
+    }
+
 
 }
