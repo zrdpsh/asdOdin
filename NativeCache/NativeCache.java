@@ -6,9 +6,17 @@ class NativeCache<T>
     public String [] slots;
     public T [] values;
     public int [] hits;
+    Class clazz;
 
     int step = 3;
-    // ...
+
+    public NativeCache(int size, Class clazz) {
+        this.clazz = clazz;
+        this.size = size;
+        this.slots = new String[size];
+        this.values = (T[]) java.lang.reflect.Array.newInstance(this.clazz, size);
+        this.hits = new int[size];
+    }
 
     public int hashFun(String value)
     {
@@ -50,6 +58,7 @@ class NativeCache<T>
         return i;
     }
 
+
     public boolean isKey(String key)
     {
         int slot = hashFun(key);
@@ -60,16 +69,6 @@ class NativeCache<T>
         }
 
         return false;
-    }
-
-    public int put(String value)
-    {
-        int i;
-        i = seekSlot(value);
-        if(i != -1) {
-            slots[i] = value;
-        }
-        return i;
     }
 
     public int find(String value)
@@ -84,6 +83,7 @@ class NativeCache<T>
         return -1;
     }
 
+
     public T get(String str) {
         int i = find(str);
         if (i != -1) {
@@ -92,6 +92,23 @@ class NativeCache<T>
         }
 
         return null;
+    }
+
+    public void put(String str, T value)
+    {
+        int i;
+        i = seekSlot(str);
+        if(i != -1) {
+            slots[i] = str;
+            values[i] = value;
+        }
+
+        if (i == -1) {
+            int minIx = minValue(this.hits);
+            slots[minIx] = str;
+            values[minIx] = value;
+            hits[minIx] = 0;
+        }
     }
 
     public static int minValue(int[] hits) {
