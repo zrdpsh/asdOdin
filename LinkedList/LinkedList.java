@@ -11,6 +11,7 @@ public class LinkedList
     {
         head = null;
         tail = null;
+        //comment
     }
 
     public void addInTail(Node item) {
