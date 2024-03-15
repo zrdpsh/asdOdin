@@ -17,12 +17,12 @@ public class DynArray<T>
 
     public void makeArray(int new_capacity)
     {
-        T[] temp = (T[]) java.lang.reflect.Array.newInstance(this.clazz, new_capacity);
+        T[] javaDefaultObjectsArray = (T[]) java.lang.reflect.Array.newInstance(this.clazz, new_capacity);
         this.capacity = new_capacity;
         if (this.array != null) {
-            for (int i = 0; i < count; i++) temp[i] = this.array[i];
+            for (int i = 0; i < count; i++) javaDefaultObjectsArray[i] = this.array[i];
         }
-        this.array = temp;
+        this.array = javaDefaultObjectsArray;
     }
 
     public T getItem(int index)
