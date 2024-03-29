@@ -3,6 +3,7 @@ public class BloomFilter
     private static final int RAND1 = 17;
     private static final int RAND2 = 223;
     int MASK = 0x0_000_0000;
+    int check;
     int binaryString;
 
     public int filter_len;
