@@ -103,7 +103,9 @@ import java.util.*;
     }
 
     private boolean nextIsGreaterThanGiven(Node<T> v1, Node<T> v2) {
-        if (compare(v1.value, v2.value) < 0) return true;
+        if (compare(v1.value, v2.value) < 0) {
+         return true;
+        }
         return false;
     }
 
