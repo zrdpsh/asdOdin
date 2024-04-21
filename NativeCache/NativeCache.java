@@ -36,6 +36,7 @@ class NativeCache<T>
         return i;
     }
 
+    // ..найти свободное место в списке, сначала проверяем через шаг, потом - все подряд
     public int checkIndex(int i, String key) {
         i = checkViaStep(i, key);
         if (i >= size) i = checkEach(key);
