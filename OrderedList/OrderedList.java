@@ -75,6 +75,7 @@ import java.util.*;
         nodeAdded.prev.next = nodeAdded;
         nodeAdded.next = null;
         this.tail = nodeAdded;
+     
         len++;
 
     }
