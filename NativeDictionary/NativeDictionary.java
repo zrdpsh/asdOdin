@@ -27,6 +27,7 @@ class NativeDictionary<T>
         return (sum % size);
     }
 
+    
     public int seekSlot(String value)
     {
         int i;
