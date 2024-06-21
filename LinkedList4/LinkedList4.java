@@ -38,6 +38,7 @@ public class LinkedList4 {
             }
             return null;
         }
+        
 
         public ArrayList<Node> findAll(int _value)
         {
