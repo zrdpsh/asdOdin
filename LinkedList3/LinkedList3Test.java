@@ -30,6 +30,7 @@ class LinkedList3Test {
         Assertions.assertTrue(testList.dummy().prev.value == 7);
     }
 
+    
     @Test
     void findMany() {
         LinkedList3 testList = new LinkedList3();
