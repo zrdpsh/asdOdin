@@ -17,6 +17,7 @@ class NativeDictionary<T>
 
       for (int i = 0; i < size; i++) slots[i] = null;
     }
+    
 
     public int hashFun(String key)
     {
