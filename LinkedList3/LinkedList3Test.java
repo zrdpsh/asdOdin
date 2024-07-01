@@ -17,6 +17,7 @@ class LinkedList3Test {
         Assertions.assertTrue(testList.dummy().next == testList.dummy());
     }
 
+    
     @Test
     void findOne() {
         LinkedList3 testList = new LinkedList3();
