@@ -99,6 +99,7 @@ public class LinkedList3 {
 
         return res;
     }
+    
 
     public void insertAfter(Node _nodeAfter, Node _nodeToInsert)
     {
