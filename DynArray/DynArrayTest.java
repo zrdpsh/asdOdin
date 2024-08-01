@@ -21,6 +21,7 @@ class DynArrayTest {
         Assertions.assertTrue(testDA.capacity == 32);
         Assertions.assertTrue(a == 16);
     }
+    
 
     @Test
     void getItemGetFrst() {
