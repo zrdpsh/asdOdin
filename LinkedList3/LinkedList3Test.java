@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 class LinkedList3Test {
 
+    
     @Test
     void findNull() {
         LinkedList3 testList = new LinkedList3();
