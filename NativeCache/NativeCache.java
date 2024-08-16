@@ -17,6 +17,7 @@ class NativeCache<T>
         this.values = (T[]) java.lang.reflect.Array.newInstance(this.clazz, size);
         this.hits = new int[size];
     }
+    
 
     public int hashFun(String value)
     {
