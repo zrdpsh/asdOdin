@@ -18,7 +18,6 @@ public class LinkedList4 {
             return this.dummy;
         }
 
-
         public void addInTail(Node _item)
         {
             _item.prev = this.dummy.prev;
