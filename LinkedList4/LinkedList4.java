@@ -6,6 +6,8 @@ public class LinkedList4 {
 
         private Node dummy;
 
+        
+
         public LinkedList4()
         {
             this.dummy = new DummyNode(-1);
