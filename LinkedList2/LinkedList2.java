@@ -163,6 +163,7 @@ public class LinkedList2
     }
 }
 
+
 class Node
 {
     public int value;
