@@ -2,6 +2,7 @@ package LinkedList2;
 
 import java.util.*;
 
+
 public class LinkedList2
 {
     public Node head;
